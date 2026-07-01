@@ -88,26 +88,27 @@ a {
 }
 
 h1 {
-	font-family: var(--font-bodoni-cyrillic), serif;
-	font-size: 4rem;
+	font-family: "bodoniCyrillic", serif;
+	font-size: 4.6875rem;
 }
 h2 {
-	font-family: var(--font-bodoni-cyrillic), serif;
-	font-size: 3rem;
+	font-family: "Bricolage Grotesque", sans-serif;
+	font-size: 3.125rem;
+	font-weight: 400;
 }
 h3 {
-	font-family: var(--font-bodoni-cyrillic), serif;
+	font-family: "bodoniCyrillic", serif;
 	font-size: 1.5625rem;
 }
 h4 {
-	font-family: var(--font-bodoni-cyrillic), serif;
+	font-family: "bodoniCyrillic", serif;
 	font-size: 1.25rem;
 }
 h5 {
-	font-family: var(--font-bodoni-cyrillic), serif;
+	font-family: "bodoniCyrillic", serif;
 	font-size: 1rem;
 }
 h6 {
-	font-family: var(--font-bodoni-cyrillic), serif;
+	font-family: "bodoniCyrillic", serif;
 	font-size: 0.875rem;
 }

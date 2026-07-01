@@ -12,7 +12,7 @@ const bricolageGrotesque = Bricolage_Grotesque({
 });
 
 const bodoniCyrillic = localFont({
-	src: "../fonts/Bodoni Cyrillic.ttf",
+	src: "../fonts/BodoniCyrillic.ttf",
 	variable: "--font-bodoni-cyrillic"
 });
 
