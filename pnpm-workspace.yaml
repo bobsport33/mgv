@@ -1,0 +1,9 @@
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+minimumReleaseAge: 10080
+onlyBuiltDependencies:
+  - core-js
+  - esbuild
+  - unrs-resolver
+strictBuilds: true
