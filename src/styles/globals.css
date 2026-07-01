@@ -1,4 +1,5 @@
 :root {
+	/* colors */
 	--neutral-100: #edebe7;
 	--neutral-200: #d7d5d1;
 	--neutral-300: #c1bfbc;
@@ -32,28 +33,37 @@
 	--secondary-900: #475568;
 	--secondary-1000: #3c4757;
 
-	--accent-100: #ddd0d3;
-	--accent-200: #d7c8cc;
-	--accent-300: #d1c0c5;
-	--accent-400: #ccb8bd;
-	--accent-500: #c6b0b6;
-	--accent-600: #b29ea4;
-	--accent-700: #9e8d92;
-	--accent-800: #8b7b7f;
-	--accent-900: #776a6d;
-	--accent-1000: #63585b;
+	--tertiary-100: #ddd0d3;
+	--tertiary-200: #d7c8cc;
+	--tertiary-300: #d1c0c5;
+	--tertiary-400: #ccb8bd;
+	--tertiary-500: #c6b0b6;
+	--tertiary-600: #b29ea4;
+	--tertiary-700: #9e8d92;
+	--tertiary-800: #8b7b7f;
+	--tertiary-900: #776a6d;
+	--tertiary-1000: #63585b;
 
+	/* padding */
 	--padding: 0 36px;
 
+	/* fonts */
 	--body-large: 1.5rem;
 	--body-medium: 1.25rem;
 	--body-small: 1rem;
+
+	/* drop shadows */
+	--shadow-small: 0 1px 2px rgba(63, 58, 58, 0.06);
+	--shadow-medium: 0 4px 8px rgba(63, 58, 58, 0.08);
+	--shadow-large: 0 10px 20px rgba(63, 58, 58, 0.1);
+	--shadow-extra: 0 20px 40px rgba(63, 58, 58, 0.12);
 }
 
 html,
 body {
 	max-width: 100vw;
 	overflow-x: hidden;
+	min-height: 100vh;
 }
 
 body {
@@ -64,7 +74,6 @@ body {
 	font-weight: 400;
 	font-style: normal;
 	font-variation-settings: "wdth" 100;
-	padding: var(--padding);
 }
 
 * {

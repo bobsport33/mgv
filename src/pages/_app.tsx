@@ -4,6 +4,8 @@ import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import { Bricolage_Grotesque } from "next/font/google";
 
+import Header from "@/modules/Header/Index";
+
 const bricolageGrotesque = Bricolage_Grotesque({
 	subsets: ["latin"],
 	variable: "--font-bricolage-grotesque"
@@ -19,6 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		<main
 			className={`${bricolageGrotesque.variable} ${bodoniCyrillic.variable}`}
 		>
+			<Header />
 			<Component {...pageProps} />
 		</main>
 	);
