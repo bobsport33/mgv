@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/svgs/mgv_simple_logo 1.svg";
 
 const HeaderContainer = styled.header`
 	height: 60px;
@@ -21,20 +21,11 @@ const HeaderContainer = styled.header`
 			flex: 1;
 		}
 
-		&__logo {
-			width: 263px;
-			height: 189px;
-			border: 1px solid var(--tertiary-500);
-			background-color: var(--neutral-100);
-			box-shadow: var(--shadow-medium);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
 		&__rightContainer {
+			margin-right: 36px;
 			display: flex;
-			justify-content: space-evenly;
+			justify-content: flex-end;
+			gap: 50px;
 			align-items: center;
 			flex: 1;
 		}
@@ -72,28 +63,22 @@ const HeaderContainer = styled.header`
 const Header = () => {
 	return (
 		<HeaderContainer>
-			<div className="header__leftContainer">
-				<Link className="header__link" href={"/"}>
-					Home
-				</Link>
+			<Link href={"/"}>
+				<Logo />
+			</Link>
+
+			<div className="header__rightContainer">
 				<Link className="header__link" href={"/services"}>
 					Services
 				</Link>
-			</div>
-			<div className="header__logo">
-				<Image
-					src={"/images/MGV_Final_Logo_Transparent_Low.png"}
-					alt="MGV Logo"
-					width={230}
-					height={166}
-				/>
-			</div>
-			<div className="header__rightContainer">
 				<Link className="header__link" href={"/about"}>
 					About
 				</Link>
 				<Link className="header__link" href={"/contact"}>
 					Contact
+				</Link>
+				<Link className="header__link" href={"/client-portal"}>
+					Client Portal
 				</Link>
 			</div>
 		</HeaderContainer>
