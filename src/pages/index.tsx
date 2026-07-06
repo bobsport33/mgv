@@ -1,4 +1,8 @@
+import AwardCards from "@/modules/AwardCards/Index";
+import CTA from "@/modules/CTA/Index";
+import GeometricImageContent from "@/modules/GeometricImageContent/Index";
 import Hero from "@/modules/Hero/Index";
+import TestimonialCarousel from "@/modules/TestimonialCarousel/Index";
 import Head from "next/head";
 
 export default function Home() {
@@ -18,6 +22,52 @@ export default function Home() {
 			</Head>
 			<div>
 				<Hero />
+				<GeometricImageContent
+					title="Your Family. Your Attorney."
+					subTitle="Every Step of the Way"
+					description="At MGV, we've spent over four decades building one of Chicago's most respected family law practices on a simple belief: every client deserves clear guidance, honest counsel, and an attorney who is truly present for them. We take the time to understand what matters most to you, explain your options plainly, and navigate the path forward—together."
+					imageUrl="#"
+					imageAlt={"#"}
+				/>
+				<AwardCards
+					title="Professional Awards"
+					awards={[
+						{
+							imageUrl: "#",
+							imageAlt: "#",
+							title: "Best Lawyers in America",
+							recepiant: "Evan Mammas",
+							organization: "Selected by Peer Recognition - 2022"
+						},
+						{
+							imageUrl: "#",
+							imageAlt: "#",
+							title: "Best Lawyers- Ones to Watch",
+							organization: "Issued by Best Lawyers - 2025"
+						},
+						{
+							imageUrl: "#",
+							imageAlt: "#",
+							title: "Best Law Firms- Chicago",
+							organization: "Issued by Best Lawyers - 2024"
+						},
+						{
+							imageUrl: "#",
+							imageAlt: "#",
+							title: "Superlawyers: Rising Star: ",
+							recepiant: "Cadi Vanderporten",
+							organization: "Issued by Superlawyers - 2024"
+						}
+					]}
+				/>
+				<TestimonialCarousel
+					title="What Our Clients Are Saying"
+					testimonials={[
+						"“Caidi and MGV Firm transformed a situation fraught with abuse and frustration into one where my family could thrive. Their ethical and loving support was instrumental, and I cannot recommend them more highly.”",
+						"friend"
+					]}
+				/>
+				<CTA />
 			</div>
 		</>
 	);

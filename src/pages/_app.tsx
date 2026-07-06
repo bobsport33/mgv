@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import { Bricolage_Grotesque } from "next/font/google";
 
 import Header from "@/modules/Header/Index";
+import Footer from "@/modules/Footer/Index";
 
 const bricolageGrotesque = Bricolage_Grotesque({
 	subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		>
 			<Header />
 			<Component {...pageProps} />
+			<Footer />
 		</main>
 	);
 }

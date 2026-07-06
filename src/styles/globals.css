@@ -52,11 +52,14 @@
 	--body-medium: 1.25rem;
 	--body-small: 1rem;
 
-	/* drop shadows */
-	--shadow-small: 0 1px 2px rgba(63, 58, 58, 0.06);
-	--shadow-medium: 0 4px 8px rgba(63, 58, 58, 0.08);
-	--shadow-large: 0 10px 20px rgba(63, 58, 58, 0.1);
-	--shadow-extra: 0 20px 40px rgba(63, 58, 58, 0.12);
+	--font-bricolage: "bodoniCyrillic", serif;
+	--font-bodoni: "bodoniCyrillic", serif;
+
+	/* shadows */
+	--shadow-small: 0 2px 4px rgba(63, 58, 58, 0.15);
+	--shadow-medium: 0 6px 12px rgba(63, 58, 58, 0.26);
+	--shadow-large: 0 12px 24px rgba(63, 58, 58, 0.38);
+	--shadow-extra: 0 24px 48px rgba(63, 58, 58, 0.5);
 }
 
 html,
@@ -98,7 +101,7 @@ h2 {
 }
 h3 {
 	font-family: "bodoniCyrillic", serif;
-	font-size: 1.5625rem;
+	font-size: 2.5rem;
 }
 h4 {
 	font-family: "bodoniCyrillic", serif;
