@@ -25,7 +25,7 @@ export default function Home() {
 				<GeometricImageContent
 					title="Your Family. Your Attorney."
 					subTitle="Every Step of the Way"
-					description="At MGV, we've spent over four decades building one of Chicago's most respected family law practices on a simple belief: every client deserves clear guidance, honest counsel, and an attorney who is truly present for them. We take the time to understand what matters most to you, explain your options plainly, and navigate the path forward—together."
+					description="At MGV, we've spent over four decades building one of Chicago's most respected family law practices on a simple belief: every client deserves clear guidance, honest counsel, and an attorney who is truly present for them. We take the time to understand what matters most to you, explain your options, and navigate the path forward—together."
 					imageUrl="#"
 					imageAlt={"#"}
 				/>
@@ -35,36 +35,41 @@ export default function Home() {
 						{
 							imageUrl: "#",
 							imageAlt: "#",
-							title: "Best Lawyers in America",
-							recepiant: "Evan Mammas",
-							organization: "Selected by Peer Recognition - 2022"
+							title: "Best Lawyers in America: ",
+							recepiant: "Evan James Mammas",
+							organization:
+								"Selected by Peer Recognition · 2022-2026"
 						},
 						{
 							imageUrl: "#",
 							imageAlt: "#",
-							title: "Best Lawyers- Ones to Watch",
-							organization: "Issued by Best Lawyers - 2025"
+							title: "Best Lawyers, Ones to Watch: ",
+							recepiant: "Caidi Vanderporten",
+							organization: "Issued by Best Lawyers · 2020-2026"
 						},
 						{
 							imageUrl: "#",
 							imageAlt: "#",
-							title: "Best Law Firms- Chicago",
-							organization: "Issued by Best Lawyers - 2024"
+							title: "Best Law Firms, Chicago: ",
+							organization: "Issued by Best Lawyers · 2022-2026"
 						},
 						{
 							imageUrl: "#",
 							imageAlt: "#",
-							title: "Superlawyers: Rising Star: ",
+							title: "Superlawyers, Rising Star: ",
 							recepiant: "Cadi Vanderporten",
-							organization: "Issued by Superlawyers - 2024"
+							organization: "Issued by Superlawyers · 2020-2026"
 						}
 					]}
 				/>
 				<TestimonialCarousel
 					title="What Our Clients Are Saying"
 					testimonials={[
-						"“Caidi and MGV Firm transformed a situation fraught with abuse and frustration into one where my family could thrive. Their ethical and loving support was instrumental, and I cannot recommend them more highly.”",
-						"friend"
+						"Caidi and MGV Firm transformed a situation fraught with abuse and frustration into one where my family could thrive. Their ethical and loving support was instrumental, and I cannot recommend them more highly.",
+						"Not only did Evan provide expert legal advice, but he also showed genuine compassion and understanding during a difficult time. His dedication and commitment to achieving the best possible outcome for me was truly commendable.",
+						"I cannot recommend Mrs. Caidi Mammas Vanderporten enough. She was absolutely amazing. From day one, she provided the support and information I needed. She is ethical, honest, and knowledgeable and clearly loves the work she does.",
+						"After a very complicated case, with a ton of moving parts, Caidi did an amazing job. She was very punctual, excellent at communicating, and had a fighting spirit that was ferocious, but controlled. Her ability to listen to my wishes and not be pushed around were highly appreciated.",
+						"Caidi was a wonder when helping me through my divorce. She was often having to both keep everything on track and manage both the other lawyer and the mediator. Sometimes it felt like she was the only adult in the room. I'm confident that we would still be walking slowly in circles if she hadn't taken the proper initiative."
 					]}
 				/>
 				<CTA />
