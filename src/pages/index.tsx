@@ -33,16 +33,16 @@ export default function Home() {
 					title="Professional Awards"
 					awards={[
 						{
-							imageUrl: "#",
-							imageAlt: "#",
+							imageUrl: "/images/Best Lawyers.png",
+							imageAlt: "Best Lawyers in America Logo",
 							title: "Best Lawyers in America: ",
 							recepiant: "Evan James Mammas",
 							organization:
 								"Selected by Peer Recognition · 2022-2026"
 						},
 						{
-							imageUrl: "#",
-							imageAlt: "#",
+							imageUrl: "/images/Best Lawyers.png",
+							imageAlt: "Best Lawyers in America Logo",
 							title: "Best Lawyers, Ones to Watch: ",
 							recepiant: "Caidi Vanderporten",
 							organization: "Issued by Best Lawyers · 2020-2026"
@@ -54,8 +54,8 @@ export default function Home() {
 							organization: "Issued by Best Lawyers · 2022-2026"
 						},
 						{
-							imageUrl: "#",
-							imageAlt: "#",
+							imageUrl: "/images/Rising Stars.png",
+							imageAlt: "Superlawyers Rising Star award icon",
 							title: "Superlawyers, Rising Star: ",
 							recepiant: "Cadi Vanderporten",
 							organization: "Issued by Superlawyers · 2020-2026"
