@@ -51,6 +51,8 @@ const HeaderContainer = styled.header`
 			}
 		}
 
+		/* -------------------- HAMBURGER -------------------- */
+
 		&__hamburger {
 			display: none;
 			height: 36px;
@@ -64,7 +66,7 @@ const HeaderContainer = styled.header`
 		}
 
 		&__hamburgerIcon {
-			height: 1.5px;
+			height: 2px;
 			width: 25.5px;
 			border-radius: 20px;
 			background-color: var(--primary-500);
@@ -74,37 +76,56 @@ const HeaderContainer = styled.header`
 			&::before,
 			&::after {
 				content: "";
-				display: inline-block;
-				height: 2px;
-				width: 25.5px;
-				border-radius: 20px;
-				background-color: var(--primary-500);
-				position: absolute;
-				left: 0;
+				display: none;
+			}
+		}
+
+		&__hamburgerBar {
+			height: 2px;
+			width: 25.5px;
+			border-radius: 20px;
+			background-color: var(--primary-500);
+			position: absolute;
+			left: 0;
+
+			&--top {
+				top: -6.5px;
 			}
 
-			&::before {
-				top: -6px;
-			}
-
-			&::after {
-				top: 5.5px;
+			&--bottom {
+				top: 6.5px;
 			}
 		}
 
 		&__hamburger--open {
 			.header__hamburgerIcon {
 				animation: menuOpened 1s forwards;
+			}
 
-				&::before {
-					animation: menuOpenedBefore 1s forwards;
-				}
+			.header__hamburgerBar--top {
+				animation: menuOpenedBefore 1s forwards;
+			}
 
-				&::after {
-					animation: menuOpenedAfter 1s forwards;
-				}
+			.header__hamburgerBar--bottom {
+				animation: menuOpenedAfter 1s forwards;
 			}
 		}
+
+		&__hamburger--touched:not(.header__hamburger--open) {
+			.header__hamburgerIcon {
+				animation: menuClosed 1s forwards;
+			}
+
+			.header__hamburgerBar--top {
+				animation: menuClosedBefore 1s forwards;
+			}
+
+			.header__hamburgerBar--bottom {
+				animation: menuClosedAfter 1s forwards;
+			}
+		}
+
+		/* -------------------- MOBILE MENU -------------------- */
 
 		&__mobileMenu {
 			position: absolute;
@@ -119,15 +140,11 @@ const HeaderContainer = styled.header`
 			padding: 32px 0;
 
 			transform: translateY(-120%);
-			opacity: 0;
 			pointer-events: none;
-			transition:
-				transform 0.3s ease,
-				opacity 0.3s ease;
+			transition: transform 0.3s ease;
 
 			&--open {
 				transform: translateY(0);
-				opacity: 1;
 				pointer-events: auto;
 			}
 		}
@@ -142,6 +159,8 @@ const HeaderContainer = styled.header`
 			}
 		}
 	}
+
+	/* -------------------- OPEN -------------------- */
 
 	@keyframes menuOpened {
 		0% {
@@ -190,10 +209,59 @@ const HeaderContainer = styled.header`
 			transform: rotate(90deg);
 		}
 	}
+
+	@keyframes menuClosed {
+		0% {
+			transform: rotate(45deg);
+		}
+
+		50% {
+			transform: rotate(0);
+		}
+
+		100% {
+			transform: rotate(0);
+		}
+	}
+
+	@keyframes menuClosedBefore {
+		0% {
+			top: 0;
+			transform: rotate(90deg);
+		}
+
+		50% {
+			top: 0;
+			transform: rotate(0);
+		}
+
+		100% {
+			top: -6px;
+			transform: rotate(0);
+		}
+	}
+
+	@keyframes menuClosedAfter {
+		0% {
+			top: 0;
+			transform: rotate(90deg);
+		}
+
+		50% {
+			top: 0;
+			transform: rotate(0);
+		}
+
+		100% {
+			top: 5.5px;
+			transform: rotate(0);
+		}
+	}
 `;
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const [menuTouched, setMenuTouched] = useState(false);
 
 	const links = [
 		{ href: "/services", label: "Services" },
@@ -223,12 +291,18 @@ const Header = () => {
 			<button
 				className={`header__hamburger ${
 					menuOpen ? "header__hamburger--open" : ""
-				}`}
-				onClick={() => setMenuOpen((prev) => !prev)}
+				} ${menuTouched ? "header__hamburger--touched" : ""}`}
+				onClick={() => {
+					setMenuTouched(true);
+					setMenuOpen((prev) => !prev);
+				}}
 				aria-label="Toggle menu"
 				aria-expanded={menuOpen}
 			>
-				<span className="header__hamburgerIcon" />
+				<span className="header__hamburgerIcon">
+					<span className="header__hamburgerBar header__hamburgerBar--top" />
+					<span className="header__hamburgerBar header__hamburgerBar--bottom" />
+				</span>
 			</button>
 
 			<div
