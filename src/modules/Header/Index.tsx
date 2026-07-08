@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
@@ -40,10 +40,17 @@ const HeaderContainer = styled.header`
 				transform: scaleX(0);
 				transform-origin: center;
 				transition: transform 0.3s ease;
+
+				${media.tablet} {
+					display: none;
+				}
 			}
 
 			&:hover::after {
 				transform: scaleX(1);
+				${media.tablet} {
+					transform: scaleX(0);
+				}
 			}
 
 			&--active {
@@ -262,6 +269,20 @@ const HeaderContainer = styled.header`
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [menuTouched, setMenuTouched] = useState(false);
+
+	useEffect(() => {
+		const observer = new ResizeObserver(() => {
+			if (window.innerWidth > 1100 && menuOpen) {
+				setMenuOpen(false);
+			}
+		});
+
+		observer.observe(document.body);
+
+		return () => {
+			observer.disconnect();
+		};
+	}, [menuOpen]);
 
 	const links = [
 		{ href: "/services", label: "Services" },
