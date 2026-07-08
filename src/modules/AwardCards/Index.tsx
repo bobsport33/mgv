@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+import { media } from "@/styles/breakpoints";
+
 interface Award {
 	imageUrl: string;
 	imageAlt: string;
@@ -27,6 +29,10 @@ const Awards = styled.div`
 	padding: 50px 36px;
 	gap: 50px;
 
+	${media.tablet} {
+		gap: 30px;
+	}
+
 	.awards {
 		&__title {
 		}
@@ -35,6 +41,10 @@ const Awards = styled.div`
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			gap: 60px;
+
+			${media.tablet} {
+				gap: 30px;
+			}
 		}
 
 		&__card {

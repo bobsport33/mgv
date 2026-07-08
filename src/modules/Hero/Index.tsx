@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Logo from "@/svgs/Frame 23.svg";
+import { media } from "@/styles/breakpoints";
 
 const HeroContainer = styled.div`
 	height: 600px;
@@ -22,6 +23,10 @@ const HeroContainer = styled.div`
 	background-position: center 70%;
 	background-repeat: no-repeat;
 
+	${media.tablet} {
+		height: fit-content;
+	}
+
 	.hero {
 		&__container {
 			display: flex;
@@ -30,10 +35,30 @@ const HeroContainer = styled.div`
 			justify-content: center;
 			gap: 30px;
 			transform: translateY(-60px);
+
+			${media.tablet} {
+				padding: 80px 26px;
+				transform: translateY(-35px);
+			}
 		}
+
+		&__heading,
+		&__subheading {
+			text-align: center;
+		}
+
 		&__logo {
 			height: 182px;
 			width: auto;
+
+			${media.tablet} {
+				height: 150px;
+			}
+
+			& svg {
+				height: 100%;
+				width: 100%;
+			}
 		}
 
 		&__textContainer {
@@ -53,7 +78,7 @@ const Hero = () => {
 					<Logo />
 				</div>
 				<div className="hero__textContainer">
-					<h1 className="hero__heaading">
+					<h1 className="hero__heading">
 						Mammas Goldberg Vanderporten
 					</h1>
 					<h2 className="hero__subheading">

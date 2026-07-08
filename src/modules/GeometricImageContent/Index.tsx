@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import TriangleCorner from "@/svgs/triangle_corner.svg";
+import { media } from "@/styles/breakpoints";
 
 interface ImageContentProps {
 	title: string;
@@ -18,6 +19,12 @@ const ImageContent = styled.div`
 	align-items: center;
 	position: relative;
 	gap: 40px;
+
+	${media.tablet} {
+		height: fit-content;
+		flex-direction: column;
+		padding: 40px 0;
+	}
 
 	.content {
 		&__background {
@@ -39,6 +46,11 @@ const ImageContent = styled.div`
 			aspect-ratio: 4 / 3;
 			background-color: #d9d9d9;
 			box-shadow: var(--shadow-medium);
+
+			${media.tablet} {
+				width: 85%;
+				max-width: 550px;
+			}
 		}
 
 		&__textWrapper {
@@ -47,6 +59,10 @@ const ImageContent = styled.div`
 			flex-direction: column;
 			gap: 35px;
 			align-items: center;
+
+			${media.tablet} {
+				width: 85%;
+			}
 		}
 
 		&__titleWrapper {

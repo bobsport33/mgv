@@ -5,6 +5,7 @@ import Link from "next/link";
 import MGVLogo from "@/svgs/mgvLogo.svg";
 import FacebookLogo from "@/svgs/facebook.svg";
 import LinkedinLogo from "@/svgs/linkedin.svg";
+import { media } from "@/styles/breakpoints";
 
 const FooterContainer = styled.footer`
 	display: flex;
@@ -27,9 +28,18 @@ const FooterContainer = styled.footer`
 			align-items: center;
 			gap: 30px;
 			font-size: var(--body-large);
+
+			${media.tablet} {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+			}
 		}
 		&__logo {
 			width: 300px;
+
+			${media.tablet} {
+				width: 100%;
+			}
 
 			& svg {
 				height: 100%;
@@ -41,6 +51,11 @@ const FooterContainer = styled.footer`
 			display: flex;
 			flex-direction: column;
 			gap: 10px;
+
+			${media.tablet} {
+				grid-column: 1 / 2;
+				grid-row: 2 / 3;
+			}
 		}
 
 		&__address {
