@@ -1,6 +1,34 @@
+import Team from "@/modules/Team/Index";
 import Head from "next/head";
 
 export default function About() {
+	const attorneys = [
+		{
+			name: "Evan Mammas",
+			title: "Attorney at Law, Founding Partner",
+			description:
+				"Mammas Goldberg was founded in 1981 by Evan Mammas and Jerry Goldberg with a shared commitment to exceptional family law representation. That legacy continues today through thoughtful advocacy and decades of experience.",
+			image: "/images/team/evan-mammas.jpg",
+			link: "/about/evan"
+		},
+		{
+			name: "Caidi Mammas Vanderporten",
+			title: "Attorney at Law, Partner",
+			description:
+				"Caidi Mammas Vanderporten continues the firm's tradition of providing dedicated and compassionate family law representation.",
+			image: "/images/team/caidi-mammas-vanderporten.jpg",
+			link: "/about/caidi",
+			reverse: true
+		},
+		{
+			name: "Hailey Vucsko",
+			title: "Attorney at Law, Associate",
+			description:
+				"Hailey brings thoughtful counsel and a commitment to achieving the best possible outcomes for every client.",
+			image: "/images/team/hailey-vucsko.jpg",
+			link: "/about/hailey"
+		}
+	];
 	return (
 		<>
 			<Head>
@@ -15,7 +43,9 @@ export default function About() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div></div>
+			<div>
+				<Team attorneys={attorneys} />
+			</div>
 		</>
 	);
 }

@@ -1,6 +1,55 @@
 import Head from "next/head";
 
+import { ServiceGroup } from "@/types/types";
+
 export default function Services() {
+	const services: ServiceGroup[] = [
+		{
+			title: "Marriage & Divorce",
+			services: [
+				"Dissolution of marriage",
+				"Prenuptial and postnuptial agreements",
+				"Legal separation",
+				"Declaration of invalidity of marriage"
+			]
+		},
+		{
+			title: "Parenting & Children",
+			services: [
+				"Allocation of parental responsibilities and parenting plan",
+				"Establishment of parent-child relationship",
+				"Parenting time",
+				"Parental relocation (removal)",
+				"Grandparent visitation"
+			]
+		},
+		{
+			title: "Financial Matters",
+			services: [
+				"Maintenance",
+				"Child support",
+				"Division and allocation of marital and non-marital property"
+			]
+		},
+		{
+			title: "Litigation & Advocacy",
+			services: [
+				"DCFS administrative appeals",
+				"DCFS case navigation services",
+				"Appellate reviews (appeals)",
+				"Orders of protection",
+				"Guardian ad Litem (child’s representative advocacy)"
+			]
+		},
+		{
+			title: "Alternative Dispute Resolution",
+			services: [
+				"Mediation",
+				"Collaborative divorces",
+				"Civil unions and separations"
+			]
+		}
+	];
 	return (
 		<>
 			<Head>
