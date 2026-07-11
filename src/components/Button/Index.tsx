@@ -11,6 +11,7 @@ type BaseProps = {
 type ButtonProps = BaseProps & {
 	onClick: () => void;
 	href?: never;
+	disabled?: boolean;
 };
 
 type LinkProps = BaseProps & {
@@ -93,7 +94,11 @@ const Button = (props: Props) => {
 	}
 
 	return (
-		<ButtonContainer onClick={props.onClick} className={className}>
+		<ButtonContainer
+			onClick={props.onClick}
+			className={className}
+			disabled={props.disabled}
+		>
 			{text}
 		</ButtonContainer>
 	);
