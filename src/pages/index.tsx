@@ -72,7 +72,13 @@ export default function Home() {
 						"Caidi was a wonder when helping me through my divorce. She was often having to both keep everything on track and manage both the other lawyer and the mediator. Sometimes it felt like she was the only adult in the room. I'm confident that we would still be walking slowly in circles if she hadn't taken the proper initiative."
 					]}
 				/>
-				<CTA />
+				<CTA
+					title="Get In Touch"
+					buttonText="Contact Us"
+					imageAlt="#"
+					imageUrl="#"
+					href="/contact"
+				/>
 			</div>
 		</>
 	);

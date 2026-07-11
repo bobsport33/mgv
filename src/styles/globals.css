@@ -116,6 +116,13 @@ h6 {
 	font-size: 0.875rem;
 }
 
+p,
+a,
+button,
+div {
+	font-family: "Bricolage Grotesque", sans-serif;
+}
+
 @media screen and (max-width: 1100px) {
 	h1 {
 		font-size: 3rem;
