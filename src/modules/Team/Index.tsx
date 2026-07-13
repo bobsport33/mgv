@@ -8,7 +8,6 @@ interface TeamProps {
 }
 
 const TeamWrapper = styled.section`
-	margin: 36px;
 	background-color: transparent;
 	display: flex;
 	flex-direction: column;
@@ -16,13 +15,29 @@ const TeamWrapper = styled.section`
 
 	.team {
 		&__header {
-			text-align: center;
+			height: 600px;
+			padding: 36px;
 			display: flex;
 			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
 			gap: 24px;
+			text-align: center;
+
+			background:
+				linear-gradient(
+					180deg,
+					rgba(217, 217, 217, 0.7) 70%,
+					rgba(119, 141, 173, 0.6) 100%
+				),
+				url("/images/city2.jpg");
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
 		}
 
 		&__heading {
+			margin-top: 60px;
 			color: var(--neutral-1000);
 			text-align: center;
 		}
@@ -31,12 +46,14 @@ const TeamWrapper = styled.section`
 			font-size: var(--body-large);
 			line-height: 1.75;
 			color: var(--neutral-800);
+			max-width: 1000px;
 		}
 
 		&__members {
 			display: flex;
 			flex-direction: column;
 			gap: 96px;
+			margin: 0 36px;
 		}
 	}
 `;

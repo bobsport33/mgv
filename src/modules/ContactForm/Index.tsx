@@ -137,7 +137,7 @@ const ContactWrapper = styled.section`
 			font-size: 0.85rem;
 			letter-spacing: 0.05em;
 			color: var(--neutral-900);
-			text-transform: uppercase;
+			/* text-transform: uppercase; */
 		}
 
 		&__required {
