@@ -1,5 +1,24 @@
+import { useState } from "react";
+import styled from "@emotion/styled";
+
 import Team from "@/modules/Team/Index";
+import TeamHero from "@/modules/Team/TeamHero";
+import AttorneyProfile from "@/modules/Team/AttorneyProfile";
+import { motion } from "motion/react";
 import Head from "next/head";
+import { Attorney } from "@/types/types";
+
+const AboutContainer = styled.section`
+	.about__content {
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.about__slider {
+		display: flex;
+		width: 200%;
+	}
+`;
 
 export default function About() {
 	const attorneys = [
@@ -29,6 +48,10 @@ export default function About() {
 			link: "/about/hailey"
 		}
 	];
+
+	const [selectedAttorney, setSelectedAttorney] = useState<Attorney | null>(
+		null
+	);
 	return (
 		<>
 			<Head>
@@ -43,9 +66,32 @@ export default function About() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div>
-				<Team attorneys={attorneys} />
-			</div>
+			<AboutContainer>
+				<TeamHero />
+				<div className="about__content">
+					<motion.div
+						className="about__slider"
+						animate={{
+							x: selectedAttorney ? "-100%" : "0%"
+						}}
+						transition={{
+							duration: 0.6,
+							ease: [0.4, 0, 0.2, 1]
+						}}
+					>
+						<Team
+							key="team"
+							attorneys={attorneys}
+							setSelectedAttorney={setSelectedAttorney}
+						/>
+
+						<AttorneyProfile
+							selectedAttorney={selectedAttorney}
+							setSelectedAttorney={setSelectedAttorney}
+						/>
+					</motion.div>
+				</div>
+			</AboutContainer>
 		</>
 	);
 }

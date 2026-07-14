@@ -1,13 +1,13 @@
+import { Dispatch, SetStateAction } from "react";
+
 import Image from "next/image";
 import styled from "@emotion/styled";
 
+import { Attorney } from "@/types/types";
+
 type TeamMemberProps = {
-	name: string;
-	title: string;
-	description: string;
-	image: string;
-	link: string;
-	reverse?: boolean;
+	attorney: Attorney;
+	setSelectedAttorney: Dispatch<SetStateAction<Attorney | null>>;
 };
 
 const TeamMemberWrapper = styled.article`
@@ -15,6 +15,7 @@ const TeamMemberWrapper = styled.article`
 	grid-template-columns: 420px 1fr;
 	gap: 72px;
 	align-items: center;
+
 	.teamMember {
 		/* ── Reverse Layout Modifier ── */
 
@@ -29,10 +30,12 @@ const TeamMemberWrapper = styled.article`
 		}
 
 		/* ── Image ── */
+
 		&__imageWrapper {
 			display: flex;
 			justify-content: center;
 		}
+
 		&__image {
 			position: relative;
 			width: 100%;
@@ -92,8 +95,12 @@ const TeamMemberWrapper = styled.article`
 			text-transform: uppercase;
 			color: var(--neutral-1000);
 
+			border: none;
+			background: transparent;
+			cursor: pointer;
+
 			border-bottom: 1px solid var(--primary-500);
-			padding-bottom: 6px;
+			padding: 0 0 6px;
 
 			transition:
 				color 0.25s ease,
@@ -128,14 +135,9 @@ const TeamMemberWrapper = styled.article`
 	}
 `;
 
-const TeamMember = ({
-	name,
-	title,
-	description,
-	image,
-	link,
-	reverse = false
-}: TeamMemberProps) => {
+const TeamMember = ({ attorney, setSelectedAttorney }: TeamMemberProps) => {
+	const { name, title, description, image, reverse = false } = attorney;
+
 	return (
 		<TeamMemberWrapper
 			className={`teamMember${reverse ? " teamMember--reverse" : ""}`}
@@ -158,9 +160,12 @@ const TeamMember = ({
 
 				<p className="teamMember__description">{description}</p>
 
-				<a className="teamMember__link" href={link}>
+				<button
+					className="teamMember__link"
+					onClick={() => setSelectedAttorney(attorney)}
+				>
 					Meet {name} →
-				</a>
+				</button>
 			</div>
 		</TeamMemberWrapper>
 	);
