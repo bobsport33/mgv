@@ -23,7 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
 			className={`${bricolageGrotesque.variable} ${bodoniCyrillic.variable}`}
 		>
 			<Header />
+
 			<Component {...pageProps} />
+
 			<Footer />
 		</main>
 	);

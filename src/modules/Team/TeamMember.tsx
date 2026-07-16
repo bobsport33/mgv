@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
-
 import Image from "next/image";
 import styled from "@emotion/styled";
 
@@ -7,7 +5,6 @@ import { Attorney } from "@/types/types";
 
 type TeamMemberProps = {
 	attorney: Attorney;
-	setSelectedAttorney: Dispatch<SetStateAction<Attorney | null>>;
 };
 
 const TeamMemberWrapper = styled.article`
@@ -43,6 +40,7 @@ const TeamMemberWrapper = styled.article`
 			aspect-ratio: 3 / 4;
 			overflow: hidden;
 			background-color: var(--neutral-200);
+			box-shadow: var(--shadow-medium);
 		}
 
 		&__photo {
@@ -135,7 +133,7 @@ const TeamMemberWrapper = styled.article`
 	}
 `;
 
-const TeamMember = ({ attorney, setSelectedAttorney }: TeamMemberProps) => {
+const TeamMember = ({ attorney }: TeamMemberProps) => {
 	const { name, title, description, image, reverse = false } = attorney;
 
 	return (
@@ -160,12 +158,9 @@ const TeamMember = ({ attorney, setSelectedAttorney }: TeamMemberProps) => {
 
 				<p className="teamMember__description">{description}</p>
 
-				<button
-					className="teamMember__link"
-					onClick={() => setSelectedAttorney(attorney)}
-				>
+				<a className="teamMember__link" href={attorney.link}>
 					Meet {name} →
-				</button>
+				</a>
 			</div>
 		</TeamMemberWrapper>
 	);

@@ -1,22 +1,13 @@
-import { useState } from "react";
 import styled from "@emotion/styled";
 
 import Team from "@/modules/Team/Index";
 import TeamHero from "@/modules/Team/TeamHero";
-import AttorneyProfile from "@/modules/Team/AttorneyProfile";
-import { motion } from "motion/react";
 import Head from "next/head";
-import { Attorney } from "@/types/types";
 
 const AboutContainer = styled.section`
 	.about__content {
 		overflow: hidden;
 		width: 100%;
-	}
-
-	.about__slider {
-		display: flex;
-		width: 200%;
 	}
 `;
 
@@ -28,7 +19,7 @@ export default function About() {
 			description:
 				"Mammas Goldberg was founded in 1981 by Evan Mammas and Jerry Goldberg with a shared commitment to exceptional family law representation. That legacy continues today through thoughtful advocacy and decades of experience.",
 			image: "/images/team/evan-mammas.jpg",
-			link: "/about/evan"
+			link: "/about/evan-mammas"
 		},
 		{
 			name: "Caidi Mammas Vanderporten",
@@ -36,7 +27,7 @@ export default function About() {
 			description:
 				"Caidi Mammas Vanderporten continues the firm's tradition of providing dedicated and compassionate family law representation.",
 			image: "/images/team/caidi-mammas-vanderporten.jpg",
-			link: "/about/caidi",
+			link: "/about/caidi-mammas-vanderported",
 			reverse: true
 		},
 		{
@@ -45,13 +36,10 @@ export default function About() {
 			description:
 				"Hailey brings thoughtful counsel and a commitment to achieving the best possible outcomes for every client.",
 			image: "/images/team/hailey-vucsko.jpg",
-			link: "/about/hailey"
+			link: "/about/hailey-vucsko"
 		}
 	];
 
-	const [selectedAttorney, setSelectedAttorney] = useState<Attorney | null>(
-		null
-	);
 	return (
 		<>
 			<Head>
@@ -69,27 +57,11 @@ export default function About() {
 			<AboutContainer>
 				<TeamHero />
 				<div className="about__content">
-					<motion.div
-						className="about__slider"
-						animate={{
-							x: selectedAttorney ? "-100%" : "0%"
-						}}
-						transition={{
-							duration: 0.6,
-							ease: [0.4, 0, 0.2, 1]
-						}}
-					>
-						<Team
-							key="team"
-							attorneys={attorneys}
-							setSelectedAttorney={setSelectedAttorney}
-						/>
-
-						<AttorneyProfile
-							selectedAttorney={selectedAttorney}
-							setSelectedAttorney={setSelectedAttorney}
-						/>
-					</motion.div>
+					<Team key="team" attorneys={attorneys} />
+					{/* H2: Jerry Goldberg
+SUB: In Memoriam: 1951 - 2016
+COPY: Jerry was a co-founding partner of MAMMAS GOLDBERG in 1981. Jerry obtained his undergraduate degree from Northern Illinois University and earned his Juris Doctor Degree from IIT - Chicago Kent College of Law. Jerry practiced exclusively in family law, having specialized during the last several years as an advocate and child representative in child custody and visitation cases.
+ */}
 				</div>
 			</AboutContainer>
 		</>
