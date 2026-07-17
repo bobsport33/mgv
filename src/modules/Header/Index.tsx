@@ -133,7 +133,6 @@ const HeaderContainer = styled.header`
 		}
 
 		/* -------------------- MOBILE MENU -------------------- */
-
 		&__mobileMenu {
 			position: absolute;
 			top: 60px;
@@ -145,6 +144,7 @@ const HeaderContainer = styled.header`
 			gap: 24px;
 			align-items: center;
 			padding: 32px 0;
+			z-index: 1; /* sits below header content */
 
 			transform: translateY(-120%);
 			pointer-events: none;
@@ -293,9 +293,18 @@ const Header = () => {
 
 	return (
 		<HeaderContainer>
-			<Link href="/">
-				<Logo />
-			</Link>
+			<div
+				style={{
+					position: "relative",
+					zIndex: 2,
+					display: "flex",
+					alignItems: "center"
+				}}
+			>
+				<Link href="/">
+					<Logo />
+				</Link>
+			</div>
 
 			<nav className="header__nav">
 				{links.map((link) => (
