@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-import TeamHero from "@/modules/Team/TeamHero";
 import Head from "next/head";
 import AttorneyBio from "@/modules/AttorneyBio/Index";
 
@@ -28,8 +27,6 @@ export default function Evan() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<AboutContainer>
-				<TeamHero />
-
 				<AttorneyBio
 					name="Evan James Mammas"
 					title="Attorney at Law, Founding Partner"

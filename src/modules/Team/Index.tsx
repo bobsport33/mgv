@@ -22,7 +22,6 @@ const TeamWrapper = styled.div`
 		&__members {
 			display: flex;
 			flex-direction: row;
-
 			gap: 60px;
 			margin: 0 36px;
 		}

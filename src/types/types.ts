@@ -5,8 +5,3 @@ export type Attorney = {
 	link: string;
 	reverse?: boolean;
 };
-
-export type ServiceGroup = {
-	title: string;
-	services: string[];
-};

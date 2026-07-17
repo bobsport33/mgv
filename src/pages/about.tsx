@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Team from "@/modules/Team/Index";
 import TeamHero from "@/modules/Team/TeamHero";
 import Head from "next/head";
+import InMemoriam from "@/modules/InMemorium/Index";
 
 const AboutContainer = styled.section`
 	.about__content {
@@ -25,7 +26,7 @@ export default function About() {
 			title: "Attorney at Law, Partner",
 
 			image: "/images/team/caidi-mammas-vanderporten.jpg",
-			link: "/about/caidi-mammas-vanderported",
+			link: "/about/caidi-mammas-vanderporten",
 			reverse: true
 		},
 		{
@@ -55,10 +56,11 @@ export default function About() {
 				<TeamHero />
 				<div className="about__content">
 					<Team key="team" attorneys={attorneys} />
-					{/* H2: Jerry Goldberg
-SUB: In Memoriam: 1951 - 2016
-COPY: Jerry was a co-founding partner of MAMMAS GOLDBERG in 1981. Jerry obtained his undergraduate degree from Northern Illinois University and earned his Juris Doctor Degree from IIT - Chicago Kent College of Law. Jerry practiced exclusively in family law, having specialized during the last several years as an advocate and child representative in child custody and visitation cases.
- */}
+					<InMemoriam
+						name="Jerry Goldberg"
+						dates="1951 – 2016"
+						copy="Jerry was a co-founding partner of MAMMAS GOLDBERG in 1981. Jerry obtained his undergraduate degree from Northern Illinois University and earned his Juris Doctor Degree from IIT - Chicago Kent College of Law. Jerry practiced exclusively in family law, having specialized during the last several years as an advocate and child representative in child custody and visitation cases."
+					/>
 				</div>
 			</AboutContainer>
 		</>
