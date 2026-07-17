@@ -2,20 +2,20 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const TeamHeroContainer = styled.div`
-	height: 600px;
-	padding: 36px;
+	min-height: 450px;
+	padding: 48px 36px;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
-	gap: 24px;
+	gap: 20px;
 	text-align: center;
 
 	background:
 		linear-gradient(
 			180deg,
-			rgba(217, 217, 217, 0.8) 75%,
-			rgba(119, 141, 173, 0.6) 100%
+			rgba(20, 30, 48, 0.88) 0%,
+			rgba(20, 30, 48, 0.82) 100%
 		),
 		url("/images/city2.jpg");
 	background-size: cover;
@@ -24,24 +24,23 @@ const TeamHeroContainer = styled.div`
 
 	.team {
 		&__heading {
-			margin-top: 60px;
-			color: var(--neutral-1000);
+			color: #fff;
 			text-align: center;
 		}
 
 		&__intro {
 			font-size: var(--body-large);
 			line-height: 1.75;
-			color: var(--neutral-800);
+			color: rgba(255, 255, 255, 0.9);
 			max-width: 1000px;
 		}
 	}
 `;
+
 const TeamHero = () => {
 	return (
 		<TeamHeroContainer>
 			<h1 className="team__heading">Meet the MGV Team</h1>
-
 			<p className="team__intro">
 				MAMMAS GOLDBERG was founded in 1981 by Evan Mammas and Jerry
 				Goldberg with a shared commitment to exceptional family law

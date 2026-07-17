@@ -8,7 +8,7 @@ interface TeamProps {
 }
 
 const TeamWrapper = styled.div`
-	padding: 48px 36px;
+	padding: 60px 36px;
 	background-color: transparent;
 	display: flex;
 	flex-direction: column;

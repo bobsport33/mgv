@@ -119,11 +119,11 @@ const FooterContainer = styled.footer`
 		&__links {
 			display: flex;
 			flex-direction: column;
-			gap: 25px;
+			gap: 20px;
 		}
 
 		&__link {
-			font-size: var(--body-regular);
+			font-size: var(--body-medium);
 			color: var(--primary-500);
 			position: relative;
 			width: fit-content;

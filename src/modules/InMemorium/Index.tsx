@@ -7,12 +7,12 @@ const InMemoriamContainer = styled.section`
 	text-align: center;
 
 	.in-memoriam__inner {
-		max-width: 800px;
+		max-width: 70%;
 		margin: 0 auto;
 	}
 
 	.in-memoriam__eyebrow {
-		font-size: 0.875rem;
+		font-size: var(--body-small);
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		color: rgba(255, 255, 255, 0.7);
@@ -20,12 +20,13 @@ const InMemoriamContainer = styled.section`
 	}
 
 	h2 {
-		font-size: 2rem;
+		font-size: 2.4rem;
 		margin-bottom: 0.25rem;
 		color: #fff;
 	}
 
 	.in-memoriam__dates {
+		font-size: var(--body-medium);
 		font-style: italic;
 		color: rgba(255, 255, 255, 0.7);
 		margin-bottom: 1.5rem;
@@ -34,6 +35,7 @@ const InMemoriamContainer = styled.section`
 	p {
 		line-height: 1.7;
 		color: rgba(255, 255, 255, 0.9);
+		font-size: var(--body-medium);
 	}
 `;
 
