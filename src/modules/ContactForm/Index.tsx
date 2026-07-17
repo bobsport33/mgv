@@ -447,6 +447,7 @@ const ContactForm = () => {
 									}
 									theme="primary"
 									disabled={isSubmitting}
+									onClick={() => console.log("click")}
 								></Button>
 							</div>
 						</form>
