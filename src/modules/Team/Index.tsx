@@ -8,23 +8,22 @@ interface TeamProps {
 }
 
 const TeamWrapper = styled.div`
-	padding: 36px;
+	padding: 48px 36px;
 	background-color: transparent;
 	display: flex;
 	flex-direction: column;
 	gap: 72px;
 	width: 100%;
 	flex-shrink: 0;
-	/* TODO: Add some background texture/gradient to this */
 	background-color: #b5b5b5;
-	background-image: url("/images/clean-gray-paper.png");
-	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+	background-image: url("/images/fabric-plaid.png");
 
 	.team {
 		&__members {
 			display: flex;
-			flex-direction: column;
-			gap: 96px;
+			flex-direction: row;
+
+			gap: 60px;
 			margin: 0 36px;
 		}
 	}

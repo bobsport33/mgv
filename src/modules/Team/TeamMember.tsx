@@ -8,133 +8,108 @@ type TeamMemberProps = {
 };
 
 const TeamMemberWrapper = styled.article`
-	display: grid;
-	grid-template-columns: 420px 1fr;
-	gap: 72px;
-	align-items: center;
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 0;
+	min-width: 0;
+
+	background: var(--neutral-100);
+	box-shadow: var(--shadow-medium);
+	border-radius: 6px;
+	overflow: hidden;
 
 	.teamMember {
-		/* ── Reverse Layout Modifier ── */
-
-		&--reverse {
-			.teamMember__image {
-				order: 2;
-			}
-
-			.teamMember__content {
-				order: 1;
-			}
-		}
-
-		/* ── Image ── */
-
 		&__imageWrapper {
-			display: flex;
-			justify-content: center;
+			width: 100%;
 		}
 
 		&__image {
 			position: relative;
 			width: 100%;
-			max-width: 420px;
 			aspect-ratio: 3 / 4;
 			overflow: hidden;
-			background-color: var(--neutral-200);
-			box-shadow: var(--shadow-medium);
+			background: var(--neutral-200);
 		}
 
 		&__photo {
 			object-fit: cover;
+			transition: transform 0.4s ease;
 		}
 
-		/* ── Content ── */
+		/* Content */
 
 		&__content {
 			display: flex;
 			flex-direction: column;
+			flex: 1;
 			align-items: flex-start;
-			gap: 18px;
+			padding: 28px 24px;
+			gap: 8px;
 		}
 
 		&__name {
+			margin: 0;
+
 			font-family: var(--font-bodoni);
-			font-size: clamp(2.25rem, 4vw, 3.5rem);
+			font-size: clamp(1.5rem, 2vw, 2rem);
 			font-weight: 400;
-			line-height: 1.1;
+			line-height: 1.15;
+			letter-spacing: 0.01em;
 			color: var(--neutral-1000);
-			text-transform: uppercase;
-			letter-spacing: 0.02em;
 		}
 
 		&__title {
-			font-size: 1.1rem;
-			color: var(--primary-500);
+			margin: 0;
+
+			font-size: 0.95rem;
+			font-weight: 600;
 			letter-spacing: 0.08em;
 			text-transform: uppercase;
+			color: var(--primary-500);
 		}
 
 		&__description {
-			max-width: 500px;
-			font-size: var(--body-medium);
-			line-height: 1.75;
-			color: var(--neutral-700);
 			margin-top: 12px;
-		}
 
-		/* ── Link ── */
+			font-size: var(--body-small);
+			line-height: 1.7;
+			color: var(--neutral-700);
+		}
 
 		&__link {
 			display: inline-flex;
 			align-items: center;
-			margin-top: 18px;
+			gap: 6px;
 
-			font-size: 0.85rem;
-			letter-spacing: 0.15em;
-			text-transform: uppercase;
-			color: var(--neutral-1000);
+			margin-top: auto;
+			padding-top: 24px;
 
-			border: none;
-			background: transparent;
-			cursor: pointer;
+			font-size: 0.9rem;
+			font-weight: 600;
+			letter-spacing: 0.04em;
 
-			border-bottom: 1px solid var(--primary-500);
-			padding: 0 0 6px;
+			color: var(--primary-500);
+			text-decoration: none;
 
-			transition:
-				color 0.25s ease,
-				border-color 0.25s ease;
+			transition: color 0.25s ease;
+
+			& .teamMember__link--arrow {
+				transition: transform 0.25s ease;
+			}
 
 			&:hover {
-				color: var(--primary-500);
-				border-color: var(--neutral-1000);
-			}
-		}
+				color: var(--primary-700);
 
-		/* ── Responsive ── */
-
-		@media (max-width: 900px) {
-			grid-template-columns: 1fr;
-			gap: 36px;
-
-			&--reverse {
-				.teamMember__image {
-					order: initial;
+				& .teamMember__link--arrow {
+					transform: translateX(10px);
 				}
-
-				.teamMember__content {
-					order: initial;
-				}
-			}
-
-			&__image {
-				aspect-ratio: 3 / 4;
 			}
 		}
 	}
 `;
 
 const TeamMember = ({ attorney }: TeamMemberProps) => {
-	const { name, title, description, image, reverse = false } = attorney;
+	const { name, title, image, reverse = false } = attorney;
 
 	return (
 		<TeamMemberWrapper
@@ -156,10 +131,9 @@ const TeamMember = ({ attorney }: TeamMemberProps) => {
 
 				<p className="teamMember__title">{title}</p>
 
-				<p className="teamMember__description">{description}</p>
-
 				<a className="teamMember__link" href={attorney.link}>
-					Meet {name} →
+					Meet {name}{" "}
+					<span className="teamMember__link--arrow">→</span>
 				</a>
 			</div>
 		</TeamMemberWrapper>
