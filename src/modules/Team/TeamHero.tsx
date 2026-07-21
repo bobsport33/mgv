@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { media } from "@/styles/breakpoints";
 
 const TeamHeroContainer = styled.div`
 	min-height: 450px;
@@ -22,6 +23,14 @@ const TeamHeroContainer = styled.div`
 	background-position: center center;
 	background-repeat: no-repeat;
 
+	${media.tablet} {
+		padding: 36px 24px;
+	}
+
+	${media.mobile} {
+		padding: 24px;
+	}
+
 	.team {
 		&__heading {
 			color: #fff;
@@ -33,6 +42,10 @@ const TeamHeroContainer = styled.div`
 			line-height: 1.75;
 			color: rgba(255, 255, 255, 0.9);
 			max-width: 1000px;
+
+			${media.mobile} {
+				line-height: 1.3;
+			}
 		}
 	}
 `;

@@ -3,12 +3,23 @@ import styled from "@emotion/styled";
 import AttorneyBio from "@/modules/AttorneyBio/Index";
 import Head from "next/head";
 import Button from "@/components/Button/Index";
+import { media } from "@/styles/breakpoints";
 
 const AboutContainer = styled.section`
 	display: flex;
 	flex-direction: column;
 	gap: 40px;
 	align-items: center;
+	padding: 40px;
+
+	${media.tablet} {
+		padding: 36px;
+	}
+
+	${media.mobile} {
+		align-items: flex-end;
+		padding: 24px;
+	}
 
 	.about__content {
 		overflow: hidden;

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { media } from "@/styles/breakpoints";
 
 type BaseProps = {
 	text: string;
@@ -39,6 +40,14 @@ const buttonStyles = css`
 	font-weight: 400;
 	text-decoration: none;
 	cursor: pointer;
+
+	${media.tablet} {
+		font-size: 1.3rem;
+	}
+
+	${media.mobile} {
+		font-size: 1.1rem;
+	}
 
 	transition:
 		background-color 0.2s ease,

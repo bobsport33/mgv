@@ -1,3 +1,4 @@
+import { media } from "@/styles/breakpoints";
 import styled from "@emotion/styled";
 
 const InMemoriamContainer = styled.section`
@@ -6,9 +7,17 @@ const InMemoriamContainer = styled.section`
 	color: #fff;
 	text-align: center;
 
+	${media.mobile} {
+		padding: 24px;
+	}
+
 	.in-memoriam__inner {
 		max-width: 70%;
 		margin: 0 auto;
+
+		${media.tablet} {
+			max-width: 100%;
+		}
 	}
 
 	.in-memoriam__eyebrow {
@@ -17,6 +26,10 @@ const InMemoriamContainer = styled.section`
 		text-transform: uppercase;
 		color: rgba(255, 255, 255, 0.7);
 		margin-bottom: 0.5rem;
+
+		${media.mobile} {
+			margin-bottom: 0.3rem;
+		}
 	}
 
 	h2 {
@@ -30,6 +43,10 @@ const InMemoriamContainer = styled.section`
 		font-style: italic;
 		color: rgba(255, 255, 255, 0.7);
 		margin-bottom: 1.5rem;
+
+		${media.mobile} {
+			margin-bottom: 1rem;
+		}
 	}
 
 	p {
@@ -52,7 +69,7 @@ export default function InMemoriam({ name, dates, copy }: InMemoriamProps) {
 				<p className="in-memoriam__eyebrow">In Memoriam</p>
 				<h2>{name}</h2>
 				<p className="in-memoriam__dates">{dates}</p>
-				<p>{copy}</p>
+				<p className="in-memoriam__copy">{copy}</p>
 			</div>
 		</InMemoriamContainer>
 	);

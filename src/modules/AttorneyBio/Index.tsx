@@ -1,3 +1,4 @@
+import { media } from "@/styles/breakpoints";
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
 
@@ -11,17 +12,31 @@ interface AttorneyBioProps {
 const AttorneyBioWrapper = styled.section`
 	display: flex;
 	flex-direction: column;
-	max-width: 80%;
+	max-width: 1440px;
 	margin: 0 auto;
+
+	${media.tablet} {
+		max-width: 100%;
+	}
 
 	.attorneyBio {
 		&__profile {
 			display: flex;
 			align-items: center;
 			gap: 40px;
-			padding: 40px 0;
+			padding-bottom: 40px;
 			border-bottom: 3px solid var(--secondary-500);
 			margin-bottom: 32px;
+
+			${media.tablet} {
+				padding-bottom: 36px;
+				margin-bottom: 24px;
+			}
+
+			${media.mobile} {
+				padding-bottom: 24px;
+				gap: 24px;
+			}
 		}
 
 		&__imageWrapper {
@@ -31,6 +46,10 @@ const AttorneyBioWrapper = styled.section`
 			border-radius: 12px;
 			overflow: hidden;
 			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+			${media.mobile} {
+				width: 150px;
+			}
 		}
 
 		&__image {
@@ -43,6 +62,7 @@ const AttorneyBioWrapper = styled.section`
 			display: flex;
 			flex-direction: column;
 			gap: 6px;
+			min-width: 0;
 		}
 
 		&__name {
@@ -50,6 +70,10 @@ const AttorneyBioWrapper = styled.section`
 			font-weight: 700;
 			color: var(--neutral-900);
 			margin: 0;
+
+			${media.mobile} {
+				font-size: 2rem;
+			}
 		}
 
 		&__title {
@@ -59,6 +83,10 @@ const AttorneyBioWrapper = styled.section`
 			margin: 0;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
+
+			${media.mobile} {
+				font-size: 1.5rem;
+			}
 		}
 
 		&__content {
