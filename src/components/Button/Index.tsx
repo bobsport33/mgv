@@ -5,7 +5,13 @@ import { css } from "@emotion/react";
 
 type BaseProps = {
 	text: string;
-	theme?: "primary" | "secondary" | "neutral";
+	theme?:
+		| "primary"
+		| "secondary"
+		| "tertiary"
+		| "surface-primary"
+		| "surface-secondary"
+		| "surface-tertiary";
 };
 
 type ButtonProps = BaseProps & {
@@ -62,12 +68,31 @@ const buttonStyles = css`
 		}
 	}
 
-	&.button--neutral {
+	&.button--tertiary {
+		background-color: var(--tertiary-500);
+		color: var(--primary-500);
+
+		&:hover:not(:disabled) {
+			background-color: var(--tertiary-600);
+		}
+	}
+
+	&.button--surface-primary,
+	&.button--surface-secondary {
 		background-color: var(--neutral-100);
 		color: var(--secondary-500);
 
 		&:hover:not(:disabled) {
 			background-color: var(--primary-200);
+		}
+	}
+
+	&.button--surface-tertiary {
+		background-color: var(--neutral-100);
+		color: var(--tertiary-500);
+
+		&:hover:not(:disabled) {
+			background-color: var(--tertiary-200);
 		}
 	}
 `;

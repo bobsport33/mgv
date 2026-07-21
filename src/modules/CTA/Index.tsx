@@ -6,25 +6,44 @@ import { media } from "@/styles/breakpoints";
 
 interface CTAProps {
 	title: string;
+	description?: string;
 	href: string;
 	buttonText: string;
-	imageUrl: string;
-	imageAlt: string;
+	imageUrl?: string;
+	imageAlt?: string;
+	theme?: "primary" | "secondary" | "tertiary";
 }
 
-const CTAContainer = styled.section`
+const themeColors = {
+	primary: "var(--primary-500)",
+	secondary: "var(--secondary-500)",
+	tertiary: "var(--tertiary-500)"
+};
+
+const CTAContainer = styled.section<{
+	accent: string;
+	textColor: string;
+	noImage: boolean;
+}>`
 	height: 380px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: var(--padding);
 	position: relative;
-	background-color: var(--neutral-200);
-	background: linear-gradient(
-		180deg,
-		rgba(193, 191, 188, 1) 0%,
-		rgba(237, 235, 231, 1) 100%
-	);
+
+	background: ${({ noImage }) =>
+		noImage
+			? `linear-gradient(
+				180deg,
+				rgba(170, 168, 165, 1) 0%,
+				rgba(237, 235, 231, 1) 100%
+			)`
+			: `linear-gradient(
+				180deg,
+				rgba(193, 191, 188, 1) 0%,
+				rgba(237, 235, 231, 1) 100%
+			)`};
 
 	${media.tablet} {
 		height: fit-content;
@@ -32,6 +51,16 @@ const CTAContainer = styled.section`
 		gap: 30px;
 	}
 
+	&.cta--noImage {
+		.cta__textContainer {
+			width: min(700px, 70%);
+			margin: 0 auto;
+		}
+
+		.cta__background {
+			clip-path: polygon(50% 0%, 100% 0, 85% 100%, 15% 100%, 0 0);
+		}
+	}
 	.cta {
 		&__background {
 			height: 100%;
@@ -41,7 +70,7 @@ const CTAContainer = styled.section`
 			left: 0;
 			right: 0;
 			/* z-index: -1; */
-			background-color: var(--secondary-500);
+			background-color: ${({ accent }) => accent};
 			clip-path: polygon(50% 0%, 86% 0, 62% 100%, 0 100%, 0 0);
 			box-shadow: var(--shadow-large);
 
@@ -53,19 +82,28 @@ const CTAContainer = styled.section`
 		&__textContainer {
 			width: 60%;
 			display: flex;
-			justify-content: center;
-			align-items: center;
 			flex-direction: column;
+			align-items: center;
+			justify-content: center;
 			gap: 25px;
-			z-index: 2;
 			padding: 36px;
+			z-index: 2;
 		}
+
 		&__title {
 			text-align: center;
 			width: fit-content;
 			font-size: 4.0625rem;
 			font-weight: 400;
-			color: var(--neutral-100);
+			color: ${({ textColor }) => textColor};
+		}
+
+		&__description {
+			text-align: center;
+			width: fit-content;
+			font-size: var(--body-large);
+			font-weight: 400;
+			color: ${({ textColor }) => textColor};
 		}
 
 		&__img {
@@ -91,16 +129,42 @@ const CTAContainer = styled.section`
 	}
 `;
 
-const CTA = ({ title, href, buttonText, imageUrl, imageAlt }: CTAProps) => {
+const CTA = ({
+	title,
+	theme = "primary",
+	description,
+	href,
+	buttonText,
+	imageUrl,
+	imageAlt
+}: CTAProps) => {
 	return (
-		<CTAContainer>
+		<CTAContainer
+			accent={themeColors[theme]}
+			className={!imageUrl ? "cta--noImage" : ""}
+			noImage={!imageUrl}
+			textColor={
+				theme === "tertiary"
+					? "var(--primary-500)"
+					: "var(--neutral-100)"
+			}
+		>
 			<div className="cta__background"></div>
 			<div className="cta__textContainer">
 				<h3 className="cta__title">{title}</h3>
-				<Button text={buttonText} href={href} theme="neutral" />
+				{description && (
+					<p className="cta__description">{description}</p>
+				)}
+				<Button
+					text={buttonText}
+					href={href}
+					theme="surface-tertiary"
+				/>
 			</div>
 
-			<img src={imageUrl} alt={imageAlt} className="cta__img" />
+			{imageUrl && imageAlt && (
+				<img src={imageUrl} alt={imageAlt} className="cta__img" />
+			)}
 		</CTAContainer>
 	);
 };

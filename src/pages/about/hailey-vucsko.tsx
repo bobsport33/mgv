@@ -2,8 +2,14 @@ import styled from "@emotion/styled";
 
 import AttorneyBio from "@/modules/AttorneyBio/Index";
 import Head from "next/head";
+import Button from "@/components/Button/Index";
 
 const AboutContainer = styled.section`
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	align-items: center;
+
 	.about__content {
 		overflow: hidden;
 		width: 100%;
@@ -59,6 +65,7 @@ export default function Caidi() {
 						and sustainable resolutions.
 					</p>
 				</AttorneyBio>
+				<Button text="Back to About" href="/about" theme="tertiary" />
 			</AboutContainer>
 		</>
 	);

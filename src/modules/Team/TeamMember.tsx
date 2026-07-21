@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 
 import { Attorney } from "@/types/types";
+import Link from "next/link";
 
 type TeamMemberProps = {
 	attorney: Attorney;
@@ -131,10 +132,10 @@ const TeamMember = ({ attorney }: TeamMemberProps) => {
 
 				<p className="teamMember__title">{title}</p>
 
-				<a className="teamMember__link" href={attorney.link}>
+				<Link className="teamMember__link" href={attorney.link}>
 					Meet {name}{" "}
 					<span className="teamMember__link--arrow">→</span>
-				</a>
+				</Link>
 			</div>
 		</TeamMemberWrapper>
 	);
