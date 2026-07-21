@@ -30,7 +30,13 @@ const Awards = styled.div`
 	gap: 36px;
 
 	${media.tablet} {
-		gap: 30px;
+		padding: 30px 20px;
+		gap: 20px;
+	}
+
+	${media.mobile} {
+		padding: 30px 20px;
+		gap: 24px;
 	}
 
 	.awards {
@@ -41,9 +47,15 @@ const Awards = styled.div`
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			gap: 36px;
+			width: 100%;
 
 			${media.tablet} {
-				gap: 30px;
+				gap: 16px;
+			}
+
+			${media.mobile} {
+				grid-template-columns: 1fr;
+				gap: 16px;
 			}
 		}
 
@@ -57,11 +69,34 @@ const Awards = styled.div`
 			align-items: center;
 			gap: 16px;
 
+			${media.tablet} {
+				padding: 12px;
+				gap: 8px;
+				border-radius: 8px;
+			}
+
+			${media.mobile} {
+				flex-direction: row;
+				text-align: left;
+				padding: 14px;
+				gap: 14px;
+			}
+
 			&__img {
 				width: auto;
 				height: 120px;
 				object-fit: contain;
 				background-color: transparent;
+				flex-shrink: 0;
+
+				${media.tablet} {
+					height: 64px;
+				}
+
+				${media.mobile} {
+					height: 64px;
+					max-width: 120px;
+				}
 			}
 
 			&__textContainer {
@@ -69,14 +104,51 @@ const Awards = styled.div`
 				flex-direction: column;
 				align-items: center;
 				gap: 4px;
+
+				${media.tablet} {
+					gap: 2px;
+				}
+
+				${media.mobile} {
+					align-items: flex-start;
+				}
 			}
 
-			&__text {
+			&__title {
 				margin: 0;
 				font-size: var(--body-large);
 				color: var(--neutral-1000);
 				text-align: center;
 				line-height: 1.35;
+				font-weight: 600;
+
+				${media.tablet} {
+					font-size: var(--body-regular);
+					line-height: 1.25;
+				}
+
+				${media.mobile} {
+					text-align: left;
+					font-size: var(--body-medium);
+				}
+			}
+
+			&__text {
+				margin: 0;
+				font-size: var(--body-medium);
+				color: var(--neutral-1000);
+				text-align: center;
+				line-height: 1.35;
+
+				${media.tablet} {
+					font-size: var(--body-small, 0.8rem);
+					line-height: 1.25;
+				}
+
+				${media.mobile} {
+					text-align: left;
+					font-size: var(--body-regular);
+				}
 			}
 		}
 	}
@@ -101,7 +173,7 @@ const AwardCards = ({ title, awards }: AwardCardsProps) => {
 								/>
 								<div className="awards__card__textContainer">
 									{award.title && (
-										<p className="awards__card__text">
+										<p className="awards__card__title">
 											{award.title}
 										</p>
 									)}
