@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 
 import RightArrowIcon from "@/svgs/right_arrow.svg";
 import LeftArrowIcon from "@/svgs/left_arrow.svg";
+import { media } from "@/styles/breakpoints";
 
 interface TestimonialProps {
 	title: string;
@@ -11,8 +12,7 @@ interface TestimonialProps {
 }
 
 const TestimonialContainer = styled.section`
-	padding: 36px;
-	height: 525px;
+	padding: 60px 36px;
 	width: 100%;
 	background:
 		linear-gradient(
@@ -30,30 +30,50 @@ const TestimonialContainer = styled.section`
 	justify-content: center;
 	gap: 25px;
 
+	${media.tablet} {
+		padding: 36px;
+		gap: 15px;
+	}
+
+	${media.mobile} {
+		padding: 24px;
+	}
+
 	.testimonial {
 		&__title {
 		}
 
 		&__content {
-			width: 85%;
+			width: %;
 			display: grid;
 			grid-template-columns: 48px 1fr 48px;
 			align-items: center;
 			gap: 1rem;
-			height: 80%;
+
+			${media.tablet} {
+				width: 100%;
+			}
 		}
 
 		&__viewport {
 			position: relative;
-			overflow: hidden;
-			min-height: 140px;
 			width: 100%;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
 		}
 
+		/* Invisible stack that reserves height = tallest testimonial */
+		&__sizer {
+			display: grid;
+			visibility: hidden;
+			pointer-events: none;
+		}
+
+		&__sizer-item {
+			grid-area: 1 / 1;
+			margin: 0;
+			padding: 0 1rem;
+		}
+
+		/* Visible, animated slide sits on top, filling the reserved box */
 		&__slide {
 			position: absolute;
 			inset: 0;
@@ -68,6 +88,12 @@ const TestimonialContainer = styled.section`
 			font-size: 2.25rem;
 			line-height: 1.7;
 			font-family: var(--font-bricolage);
+			text-align: center;
+
+			${media.tablet} {
+				font-size: 1.5rem;
+				line-height: 1.4;
+			}
 		}
 
 		&__button {
@@ -104,7 +130,6 @@ const TestimonialContainer = styled.section`
 			display: flex;
 			justify-content: center;
 			gap: 0.75rem;
-			margin-top: 2rem;
 		}
 
 		&__dot {
@@ -185,6 +210,20 @@ const TestimonialCarousel = ({ title, testimonials }: TestimonialProps) => {
 				</button>
 
 				<div className="testimonial__viewport">
+					{/* Invisible: renders every testimonial stacked in one grid
+					    cell so the viewport height = tallest testimonial */}
+					<div className="testimonial__sizer" aria-hidden="true">
+						{testimonials.map((text, index) => (
+							<p
+								key={index}
+								className="testimonial__text testimonial__sizer-item"
+							>
+								{text}
+							</p>
+						))}
+					</div>
+
+					{/* Visible, animated slide layered on top */}
 					<AnimatePresence
 						initial={false}
 						mode="wait"
