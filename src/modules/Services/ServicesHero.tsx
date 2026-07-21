@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { media } from "@/styles/breakpoints";
 
 const ServicesHeroContainer = styled.div`
 	padding: 64px 36px 48px;
@@ -8,6 +9,14 @@ const ServicesHeroContainer = styled.div`
 	align-items: center;
 	gap: 20px;
 	text-align: center;
+
+	${media.tablet} {
+		padding: 36px;
+	}
+
+	${media.mobile} {
+		padding: 24px;
+	}
 
 	.services {
 		&__heading {

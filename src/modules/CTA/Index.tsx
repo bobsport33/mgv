@@ -20,6 +20,12 @@ const themeColors = {
 	tertiary: "var(--tertiary-500)"
 };
 
+const buttonThemes = {
+	primary: "surface-primary",
+	secondary: "surface-secondary",
+	tertiary: "primary"
+} as const;
+
 const CTAContainer = styled.section<{
 	accent: string;
 	textColor: string;
@@ -55,10 +61,21 @@ const CTAContainer = styled.section<{
 		.cta__textContainer {
 			width: min(700px, 70%);
 			margin: 0 auto;
+
+			${media.tablet} {
+				width: 80%;
+			}
+			${media.mobile} {
+				width: 95%;
+			}
 		}
 
 		.cta__background {
 			clip-path: polygon(50% 0%, 100% 0, 85% 100%, 15% 100%, 0 0);
+
+			${media.tablet} {
+				clip-path: polygon(50% 0%, 100% 0, 90% 100%, 10% 100%, 0 0);
+			}
 		}
 	}
 	.cta {
@@ -158,7 +175,7 @@ const CTA = ({
 				<Button
 					text={buttonText}
 					href={href}
-					theme="surface-tertiary"
+					theme={buttonThemes[theme]}
 				/>
 			</div>
 

@@ -81,6 +81,7 @@ export default function Home() {
 					imageAlt="#"
 					imageUrl="#"
 					href="/contact"
+					theme="secondary"
 				/>
 			</div>
 		</>

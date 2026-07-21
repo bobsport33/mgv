@@ -12,6 +12,12 @@ const ServicesListContainer = styled.div`
 	${media.tablet} {
 		flex-direction: column;
 		align-items: center;
+
+		padding: 0 36px 36px;
+	}
+
+	${media.mobile} {
+		padding: 0 24px 24px;
 	}
 
 	.services-list {
@@ -24,6 +30,16 @@ const ServicesListContainer = styled.div`
 			display: flex;
 			flex-direction: column;
 			gap: 18px;
+
+			${media.tablet} {
+				width: 80%;
+				max-width: 80%;
+			}
+
+			${media.mobile} {
+				width: 100%;
+				max-width: 100%;
+			}
 
 			&--primary {
 				background-color: var(--primary-500);
