@@ -15,10 +15,12 @@ export default function Services() {
 	return (
 		<>
 			<Head>
-				<title>MGV - Services</title>
+				<title>
+					Family Law Services | Mammas Goldberg Vanderporten
+				</title>
 				<meta
 					name="description"
-					content="Family law and domestic relations services offered by Mammas Goldberg Vanderporten."
+					content="MGV offers comprehensive family law services in Chicago: from divorce and prenuptial agreements to DCFS appeals, mediation, and parental relocation. Boutique counsel for every matter."
 				/>
 				<meta
 					name="viewport"
