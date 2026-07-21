@@ -38,29 +38,28 @@ export default function Home() {
 						{
 							imageUrl: "/images/Best Lawyers.png",
 							imageAlt: "Best Lawyers in America Logo",
-							title: "Best Lawyers in America: ",
-							recepiant: "Evan James Mammas",
-							organization:
-								"Selected by Peer Recognition · 2022-2026"
+							title: "Best Lawyers in America: Evan James Mammas",
+							recepiant: "Expertise in Family Law",
+							organization: "Issued by Best Lawyers · 2022-2026"
 						},
 						{
 							imageUrl: "/images/Best Lawyers.png",
 							imageAlt: "Best Lawyers in America Logo",
-							title: "Best Lawyers, Ones to Watch: ",
-							recepiant: "Caidi Vanderporten",
+							title: "Best Lawyers, Ones to Watch: Caidi Vanderporten",
+							recepiant:
+								"Expertise in Family Law, Arbitration & Mediation",
 							organization: "Issued by Best Lawyers · 2020-2026"
 						},
 						{
 							imageUrl: "#",
 							imageAlt: "#",
-							title: "Best Law Firms, Chicago: ",
+							title: "Best Law Firms, Chicago: Mammas Goldberg Vanderporten",
 							organization: "Issued by Best Lawyers · 2022-2026"
 						},
 						{
 							imageUrl: "/images/Rising Stars.png",
 							imageAlt: "Superlawyers Rising Star award icon",
-							title: "Superlawyers, Rising Star: ",
-							recepiant: "Cadi Vanderporten",
+							title: "Superlawyers, Rising Star: Caidi Vanderporten",
 							organization: "Issued by Superlawyers · 2020-2026"
 						}
 					]}

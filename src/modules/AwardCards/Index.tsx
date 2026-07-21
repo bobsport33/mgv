@@ -27,7 +27,7 @@ const Awards = styled.div`
 		rgba(215, 213, 209, 1) 100%
 	);
 	padding: 50px 36px;
-	gap: 50px;
+	gap: 36px;
 
 	${media.tablet} {
 		gap: 30px;
@@ -40,7 +40,7 @@ const Awards = styled.div`
 		&__grid {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
-			gap: 60px;
+			gap: 36px;
 
 			${media.tablet} {
 				gap: 30px;
@@ -53,27 +53,30 @@ const Awards = styled.div`
 			box-shadow: var(--shadow-medium);
 			padding: 20px;
 			display: flex;
-			gap: 10px;
+			flex-direction: column;
 			align-items: center;
-			justify-content: center;
+			gap: 16px;
 
 			&__img {
-				height: 150px;
-				width: 150px;
-				object-fit: cover;
-				background-color: var(--neutral400);
+				width: auto;
+				height: 120px;
+				object-fit: contain;
+				background-color: transparent;
 			}
 
 			&__textContainer {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				gap: 4px;
 			}
 
 			&__text {
+				margin: 0;
 				font-size: var(--body-large);
-				color: var(--neutral1000);
+				color: var(--neutral-1000);
 				text-align: center;
+				line-height: 1.35;
 			}
 		}
 	}
