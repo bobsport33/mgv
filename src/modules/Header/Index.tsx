@@ -301,7 +301,7 @@ const Header = () => {
 					alignItems: "center"
 				}}
 			>
-				<Link href="/">
+				<Link href="/" onClick={() => setMenuOpen(false)}>
 					<Logo />
 				</Link>
 			</div>
