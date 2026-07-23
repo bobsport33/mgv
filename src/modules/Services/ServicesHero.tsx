@@ -21,6 +21,16 @@ const ServicesHeroContainer = styled.div`
 	.services {
 		&__heading {
 			color: var(--neutral-1000);
+			margin: 0;
+
+			${media.tablet} {
+				font-size: 3rem;
+			}
+
+			${media.mobile} {
+				font-size: 2.5rem;
+				line-height: 1.15;
+			}
 		}
 
 		&__intro {
@@ -28,6 +38,19 @@ const ServicesHeroContainer = styled.div`
 			line-height: 1.75;
 			color: var(--neutral-800);
 			max-width: 900px;
+			margin: 0;
+
+			${media.tablet} {
+				font-size: 1.125rem;
+				line-height: 1.6;
+				max-width: 700px;
+			}
+
+			${media.mobile} {
+				font-size: 1rem;
+				line-height: 1.5;
+				max-width: 100%;
+			}
 		}
 	}
 `;

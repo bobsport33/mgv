@@ -78,7 +78,7 @@ const CTAContainer = styled.section<{
 			clip-path: polygon(50% 0%, 100% 0, 85% 100%, 15% 100%, 0 0);
 
 			${media.tablet} {
-				clip-path: polygon(50% 0%, 100% 0, 90% 100%, 10% 100%, 0 0);
+				clip-path: none;
 			}
 		}
 	}
@@ -125,6 +125,10 @@ const CTAContainer = styled.section<{
 			font-size: 4.0625rem;
 			font-weight: 400;
 			color: ${({ textColor }) => textColor};
+
+			${media.tablet} {
+				font-size: 3.25rem;
+			}
 		}
 
 		&__description {

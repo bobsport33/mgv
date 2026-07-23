@@ -34,11 +34,14 @@ const ServicesListContainer = styled.div`
 			${media.tablet} {
 				width: 80%;
 				max-width: 80%;
+				padding: 36px 32px;
 			}
 
 			${media.mobile} {
 				width: 100%;
 				max-width: 100%;
+				padding: 24px 20px;
+				gap: 12px;
 			}
 
 			&--primary {
@@ -66,6 +69,11 @@ const ServicesListContainer = styled.div`
 				height: 8px;
 				border-radius: 50%;
 				background-color: #fff;
+			}
+
+			${media.mobile} {
+				font-size: 1rem;
+				line-height: 1.5;
 			}
 		}
 	}
