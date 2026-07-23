@@ -25,16 +25,24 @@ const TeamHeroContainer = styled.div`
 
 	${media.tablet} {
 		padding: 36px 24px;
+		min-height: 380px;
 	}
 
 	${media.mobile} {
 		padding: 24px;
+		min-height: 320px;
+		gap: 12px;
 	}
 
 	.team {
 		&__heading {
 			color: #fff;
 			text-align: center;
+
+			${media.mobile} {
+				font-size: 2.25rem;
+				line-height: 1.15;
+			}
 		}
 
 		&__intro {
@@ -43,8 +51,15 @@ const TeamHeroContainer = styled.div`
 			color: rgba(255, 255, 255, 0.9);
 			max-width: 1000px;
 
+			${media.tablet} {
+				max-width: 700px;
+				line-height: 1.6;
+			}
+
 			${media.mobile} {
-				line-height: 1.3;
+				font-size: 1.3rem;
+				line-height: 1.4;
+				max-width: 100%;
 			}
 		}
 	}

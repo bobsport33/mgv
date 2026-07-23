@@ -1,8 +1,9 @@
 import Image from "next/image";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 import { Attorney } from "@/types/types";
-import Link from "next/link";
+import { media } from "@/styles/breakpoints";
 
 type TeamMemberProps = {
 	attorney: Attorney;

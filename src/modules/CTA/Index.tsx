@@ -127,7 +127,7 @@ const CTAContainer = styled.section<{
 			color: ${({ textColor }) => textColor};
 
 			${media.tablet} {
-				font-size: 3.25rem;
+				font-size: 3.5rem;
 			}
 		}
 

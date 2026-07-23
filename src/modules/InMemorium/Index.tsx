@@ -36,6 +36,10 @@ const InMemoriamContainer = styled.section`
 		font-size: 2.4rem;
 		margin-bottom: 0.25rem;
 		color: #fff;
+
+		${media.mobile} {
+			font-size: 2rem;
+		}
 	}
 
 	.in-memoriam__dates {
@@ -45,7 +49,7 @@ const InMemoriamContainer = styled.section`
 		margin-bottom: 1.5rem;
 
 		${media.mobile} {
-			margin-bottom: 1rem;
+			margin-bottom: 0.75rem;
 		}
 	}
 
@@ -53,6 +57,14 @@ const InMemoriamContainer = styled.section`
 		line-height: 1.7;
 		color: rgba(255, 255, 255, 0.9);
 		font-size: var(--body-medium);
+	}
+	.in-memoriam__copy {
+		line-height: 1.6;
+
+		${media.mobile} {
+			line-height: 1.5;
+			font-size: 1.15rem;
+		}
 	}
 `;
 

@@ -1,6 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
-
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import styled from "@emotion/styled";
 
 import { Attorney } from "@/types/types";
