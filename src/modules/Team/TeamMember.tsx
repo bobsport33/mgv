@@ -31,11 +31,20 @@ const TeamMemberWrapper = styled.article`
 			aspect-ratio: 3 / 4;
 			overflow: hidden;
 			background: var(--neutral-200);
+
+			${media.mobile} {
+				aspect-ratio: auto;
+				height: 360px;
+			}
 		}
 
 		&__photo {
 			object-fit: cover;
 			transition: transform 0.4s ease;
+
+			${media.mobile} {
+				object-position: 50% 15%;
+			}
 		}
 
 		/* Content */
