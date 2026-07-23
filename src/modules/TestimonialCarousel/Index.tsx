@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styled from "@emotion/styled";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, type PanInfo } from "motion/react";
 
 import RightArrowIcon from "@/svgs/right_arrow.svg";
 import LeftArrowIcon from "@/svgs/left_arrow.svg";
@@ -44,7 +44,7 @@ const TestimonialContainer = styled.section`
 		}
 
 		&__content {
-			width: %;
+			/* width: %; */
 			display: grid;
 			grid-template-columns: 48px 1fr 48px;
 			align-items: center;
@@ -52,6 +52,10 @@ const TestimonialContainer = styled.section`
 
 			${media.tablet} {
 				width: 100%;
+			}
+
+			${media.mobile} {
+				grid-template-columns: 1fr;
 			}
 		}
 
@@ -94,6 +98,11 @@ const TestimonialContainer = styled.section`
 				font-size: 1.5rem;
 				line-height: 1.4;
 			}
+
+			${media.mobile} {
+				font-size: 1.25rem;
+				line-height: 1.5;
+			}
 		}
 
 		&__button {
@@ -123,6 +132,10 @@ const TestimonialContainer = styled.section`
 
 			&:hover {
 				opacity: 0.6;
+			}
+
+			${media.mobile} {
+				display: none;
 			}
 		}
 
@@ -169,10 +182,25 @@ const TestimonialCarousel = ({ title, testimonials }: TestimonialProps) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [direction, setDirection] = useState(1);
 
-	const next = () => {
+	const [paused, setPaused] = useState(false);
+
+	const swipeConfidenceThreshold = 100;
+
+	const handleDragEnd = (
+		_: MouseEvent | TouchEvent | PointerEvent,
+		info: PanInfo
+	) => {
+		if (info.offset.x < -swipeConfidenceThreshold) {
+			next();
+		} else if (info.offset.x > swipeConfidenceThreshold) {
+			previous();
+		}
+	};
+
+	const next = useCallback(() => {
 		setDirection(1);
 		setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-	};
+	}, [testimonials.length]);
 
 	const previous = () => {
 		setDirection(-1);
@@ -187,17 +215,15 @@ const TestimonialCarousel = ({ title, testimonials }: TestimonialProps) => {
 	};
 
 	useEffect(() => {
-		if (testimonials.length <= 1) return;
+		if (paused || testimonials.length <= 1) return;
 
-		const timer = window.setTimeout(() => {
-			next();
-		}, 8000);
+		const id = window.setInterval(next, 8000);
 
-		return () => window.clearTimeout(timer);
-	}, [currentIndex, testimonials.length]);
+		return () => clearInterval(id);
+	}, [paused, currentIndex, testimonials.length, next]);
 
 	return (
-		<TestimonialContainer onMouseEnter={() => window.clearTimeout}>
+		<TestimonialContainer>
 			<h3 className="testimonial__title">{title}</h3>
 
 			<div className="testimonial__content">
@@ -224,11 +250,7 @@ const TestimonialCarousel = ({ title, testimonials }: TestimonialProps) => {
 					</div>
 
 					{/* Visible, animated slide layered on top */}
-					<AnimatePresence
-						initial={false}
-						mode="wait"
-						custom={direction}
-					>
+					<AnimatePresence initial={false} custom={direction}>
 						<motion.div
 							key={currentIndex}
 							className="testimonial__slide"
@@ -240,6 +262,15 @@ const TestimonialCarousel = ({ title, testimonials }: TestimonialProps) => {
 							transition={{
 								duration: 0.45,
 								ease: [0.22, 1, 0.36, 1]
+							}}
+							drag="x"
+							dragConstraints={{ left: 0, right: 0 }}
+							dragElastic={0.15}
+							dragMomentum={false}
+							onDragStart={() => setPaused(true)}
+							onDragEnd={(e, info) => {
+								handleDragEnd(e, info);
+								setPaused(false);
 							}}
 						>
 							<p className="testimonial__text">
