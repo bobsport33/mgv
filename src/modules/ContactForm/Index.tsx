@@ -30,11 +30,10 @@ const ContactWrapper = styled.section`
 		&__inner {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: 36px;
+			gap: 72px;
 			align-items: start;
-			background-color: var(--neutral-200);
-			border-radius: 10px;
-			padding: 36px;
+			max-width: 1200px;
+			margin: 0 auto;
 		}
 
 		/* ── Copy ── */
@@ -47,11 +46,9 @@ const ContactWrapper = styled.section`
 		}
 
 		&__heading {
-			font-size: clamp(1.75rem, 3vw, 2.5rem);
-			color: var(--neutral-1000);
-			line-height: 1.2;
-			text-transform: uppercase;
-			letter-spacing: 0.04em;
+			font-family: var(--font-bodoni);
+			font-size: clamp(2rem, 3vw, 3rem);
+			font-weight: 400;
 		}
 
 		&__intro {
@@ -68,10 +65,8 @@ const ContactWrapper = styled.section`
 
 		/* ── Form Wrapper ── */
 		&__formWrapper {
-			background-color: var(--neutral-100);
-			border-radius: 8px;
-			padding: 2.5rem;
-			border: 1px solid var(--neutral-300);
+			padding: 2rem 0 2rem 3rem;
+			border-left: 1px solid var(--neutral-300);
 		}
 
 		&__detail {
@@ -95,6 +90,24 @@ const ContactWrapper = styled.section`
 				font-size: 2rem;
 				letter-spacing: 0.03em;
 				color: var(--neutral-1000);
+				position: relative;
+
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: -4px;
+					left: 0;
+					right: 0;
+					height: 2px;
+					background-color: var(--primary-500);
+					transform: scaleX(0);
+					transform-origin: center;
+					transition: transform 0.3s ease;
+				}
+
+				&:hover::after {
+					transform: scaleX(1);
+				}
 			}
 		}
 
@@ -111,9 +124,23 @@ const ContactWrapper = styled.section`
 			a {
 				color: var(--neutral-700);
 				transition: color 0.25s ease;
+				position: relative;
 
-				&:hover {
-					color: var(--primary-500);
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: -4px;
+					left: 0;
+					right: 0;
+					height: 2px;
+					background-color: var(--primary-500);
+					transform: scaleX(0);
+					transform-origin: center;
+					transition: transform 0.3s ease;
+				}
+
+				&:hover::after {
+					transform: scaleX(1);
 				}
 			}
 		}
@@ -156,10 +183,11 @@ const ContactWrapper = styled.section`
 		&__textarea {
 			font-size: 0.9rem;
 			color: var(--neutral-900);
-			background-color: var(--neutral-200);
-			border: 1px solid var(--neutral-400);
-			border-radius: 6px;
-			padding: 0.75rem 1rem;
+			background: transparent;
+			border: none;
+			border-bottom: 1px solid var(--neutral-400);
+			border-radius: 0;
+			padding: 0.75rem 0;
 			transition:
 				border-color 0.2s ease,
 				box-shadow 0.2s ease;
@@ -213,7 +241,7 @@ const ContactWrapper = styled.section`
 		/* ── Submit ── */
 		&__submitWrapper {
 			display: flex;
-			justify-content: flex-end;
+			justify-content: flex-start;
 			padding-top: 0.5rem;
 		}
 
@@ -261,6 +289,17 @@ const ContactForm = () => {
 		resolver: zodResolver(contactSchema)
 	});
 
+	const formatPhoneNumber = (value: string) => {
+		const numbers = value.replace(/\D/g, "").slice(0, 10);
+
+		if (numbers.length === 0) return "";
+		if (numbers.length < 4) return `(${numbers}`;
+		if (numbers.length < 7)
+			return `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
+
+		return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6)}`;
+	};
+
 	const onSubmit = async (data: ContactFormData) => {
 		try {
 			const res = await fetch("/.netlify/functions/contact", {
@@ -301,7 +340,7 @@ const ContactForm = () => {
 
 							<a
 								className="contact__value contact__value--phone"
-								href="tel:3126301111"
+								href="tel:+13126301111"
 							>
 								(312) 630-1111
 							</a>
@@ -363,6 +402,7 @@ const ContactForm = () => {
 								<input
 									id="name"
 									type="text"
+									aria-invalid={!!errors.name}
 									className={`contact__input${errors.name ? " contact__input--error" : ""}`}
 									placeholder="Your name"
 									{...register("name")}
@@ -386,6 +426,7 @@ const ContactForm = () => {
 								<input
 									id="email"
 									type="email"
+									aria-invalid={!!errors.email}
 									className={`contact__input${errors.email ? " contact__input--error" : ""}`}
 									placeholder="your@email.com"
 									{...register("email")}
@@ -408,9 +449,16 @@ const ContactForm = () => {
 								<input
 									id="phone"
 									type="tel"
+									aria-invalid={!!errors.phone}
 									className="contact__input"
-									placeholder="Your phone number"
-									{...register("phone")}
+									placeholder="(312) 630-1111"
+									{...register("phone", {
+										onChange: (e) => {
+											e.target.value = formatPhoneNumber(
+												e.target.value
+											);
+										}
+									})}
 								/>
 							</div>
 
@@ -420,13 +468,14 @@ const ContactForm = () => {
 									className="contact__label"
 									htmlFor="message"
 								>
-									What&apos;s on your mind?{" "}
+									Briefly describe your matter{" "}
 									<span className="contact__required">*</span>
 								</label>
 								<textarea
 									id="message"
+									aria-invalid={!!errors.message}
 									className={`contact__textarea${errors.message ? " contact__textarea--error" : ""}`}
-									placeholder="Tell me about your brand, project or idea..."
+									placeholder="Please provide a brief description of your matter."
 									rows={5}
 									{...register("message")}
 								/>
