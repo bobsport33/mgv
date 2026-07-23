@@ -1,5 +1,6 @@
 import { media } from "@/styles/breakpoints";
 import styled from "@emotion/styled";
+import { motion } from "motion/react";
 
 const InMemoriamContainer = styled.section`
 	padding: 4rem 2rem;
@@ -77,12 +78,21 @@ interface InMemoriamProps {
 export default function InMemoriam({ name, dates, copy }: InMemoriamProps) {
 	return (
 		<InMemoriamContainer>
-			<div className="in-memoriam__inner">
+			<motion.div
+				initial={{ opacity: 0, y: 40 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, amount: 0.25 }}
+				transition={{
+					duration: 0.8,
+					ease: "easeOut"
+				}}
+				className="in-memoriam__inner"
+			>
 				<p className="in-memoriam__eyebrow">In Memoriam</p>
 				<h2>{name}</h2>
 				<p className="in-memoriam__dates">{dates}</p>
 				<p className="in-memoriam__copy">{copy}</p>
-			</div>
+			</motion.div>
 		</InMemoriamContainer>
 	);
 }

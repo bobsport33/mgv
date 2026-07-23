@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "@emotion/styled";
+import { motion } from "motion/react";
 
 import { media } from "@/styles/breakpoints";
 import Button from "@/components/Button/Index";
@@ -340,7 +341,16 @@ const ContactForm = () => {
 		<ContactWrapper className="section contact" id="contact">
 			<div className="contact__inner">
 				{/* ── Left: Copy ── */}
-				<div className="contact__copy">
+				<motion.div
+					className="contact__copy"
+					initial={{ opacity: 0, x: -30 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, amount: 0.35 }}
+					transition={{
+						duration: 0.7,
+						ease: "easeOut"
+					}}
+				>
 					<h3 className="contact__heading">
 						Every case begins with a conversation.
 					</h3>
@@ -378,10 +388,20 @@ const ContactForm = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
 				{/* ── Right: Form or Success ── */}
-				<div className="contact__formWrapper">
+				<motion.div
+					className="contact__formWrapper"
+					initial={{ opacity: 0, x: 30 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ once: true, amount: 0.35 }}
+					transition={{
+						duration: 0.7,
+						delay: 0.15,
+						ease: "easeOut"
+					}}
+				>
 					{submitted ? (
 						<div className="contact__successMessage">
 							<h3 className="contact__successHeading">
@@ -509,7 +529,7 @@ const ContactForm = () => {
 							</div>
 						</form>
 					)}
-				</div>
+				</motion.div>
 			</div>
 		</ContactWrapper>
 	);

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { motion } from "motion/react";
 
 import { media } from "@/styles/breakpoints";
 
@@ -108,20 +109,38 @@ const listTwo = [
 const ServicesList = () => {
 	return (
 		<ServicesListContainer>
-			<ul className="services-list__card services-list__card--primary">
+			<motion.ul
+				initial={{ opacity: 0, y: 30 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, amount: 0.35 }}
+				transition={{
+					duration: 0.6,
+					ease: "easeOut"
+				}}
+				className="services-list__card services-list__card--primary"
+			>
 				{listOne.map((item) => (
 					<li className="services-list__item" key={item}>
 						{item}
 					</li>
 				))}
-			</ul>
-			<ul className="services-list__card services-list__card--secondary">
+			</motion.ul>
+			<motion.ul
+				initial={{ opacity: 0, y: 30 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, amount: 0.35 }}
+				transition={{
+					duration: 0.6,
+					ease: "easeOut"
+				}}
+				className="services-list__card services-list__card--secondary"
+			>
 				{listTwo.map((item) => (
 					<li className="services-list__item" key={item}>
 						{item}
 					</li>
 				))}
-			</ul>
+			</motion.ul>
 		</ServicesListContainer>
 	);
 };

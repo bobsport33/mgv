@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { motion } from "motion/react";
 
 import TeamMember from "./TeamMember";
 import { Attorney } from "@/types/types";
@@ -50,11 +51,24 @@ const TeamWrapper = styled.div`
 const Team = ({ attorneys }: TeamProps) => {
 	return (
 		<TeamWrapper className="team">
-			<div className="team__members">
+			<motion.div
+				className="team__members"
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true, amount: 0.5 }}
+				variants={{
+					hidden: {},
+					visible: {
+						transition: {
+							staggerChildren: 0.4
+						}
+					}
+				}}
+			>
 				{attorneys.map((attorney) => (
 					<TeamMember key={attorney.name} attorney={attorney} />
 				))}
-			</div>
+			</motion.div>
 		</TeamWrapper>
 	);
 };

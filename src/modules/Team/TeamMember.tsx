@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 import { Attorney } from "@/types/types";
 import { media } from "@/styles/breakpoints";
@@ -9,7 +10,7 @@ type TeamMemberProps = {
 	attorney: Attorney;
 };
 
-const TeamMemberWrapper = styled.article`
+const TeamMemberWrapper = styled(motion.article)`
 	display: flex;
 	flex-direction: column;
 	flex: 1 1 0;
@@ -125,6 +126,20 @@ const TeamMember = ({ attorney }: TeamMemberProps) => {
 	return (
 		<TeamMemberWrapper
 			className={`teamMember${reverse ? " teamMember--reverse" : ""}`}
+			variants={{
+				hidden: {
+					opacity: 0,
+					y: 40
+				},
+				visible: {
+					opacity: 1,
+					y: 0,
+					transition: {
+						duration: 0.8,
+						ease: "easeOut"
+					}
+				}
+			}}
 		>
 			<div className="teamMember__imageWrapper">
 				<div className="teamMember__image">

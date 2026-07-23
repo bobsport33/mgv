@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { motion } from "motion/react";
 
 import TriangleCorner from "@/svgs/triangle_corner.svg";
 import { media } from "@/styles/breakpoints";
@@ -100,14 +101,38 @@ const GeometricImageContent = ({
 			<div className="content__background">
 				<TriangleCorner />
 			</div>
-			<img src={imageUrl} alt={imageAlt} className="content__image" />
-			<div className="content__textWrapper">
+
+			<motion.img
+				src={imageUrl}
+				alt={imageAlt}
+				className="content__image"
+				initial={{ opacity: 0, x: -40, y: 40 }}
+				whileInView={{ opacity: 1, x: 0, y: 0 }}
+				viewport={{ once: true, amount: 0.4 }}
+				transition={{
+					duration: 0.7,
+					ease: "easeOut"
+				}}
+			/>
+
+			<motion.div
+				className="content__textWrapper"
+				initial={{ opacity: 0, x: 40, y: 40 }}
+				whileInView={{ opacity: 1, x: 0, y: 0 }}
+				viewport={{ once: true, amount: 0.4 }}
+				transition={{
+					duration: 0.7,
+					delay: 0.1,
+					ease: "easeOut"
+				}}
+			>
 				<div className="content__titleWrapper">
 					<h3 className="content__title">{title}</h3>
 					<h3 className="content__title">{subTitle}</h3>
 				</div>
+
 				<p className="content__description">{description}</p>
-			</div>
+			</motion.div>
 		</ImageContent>
 	);
 };

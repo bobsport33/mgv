@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Button from "@/components/Button/Index";
+import { motion } from "motion/react";
 
 import { media } from "@/styles/breakpoints";
 
@@ -75,7 +76,7 @@ const CTAContainer = styled.section<{
 		}
 
 		.cta__background {
-			clip-path: polygon(50% 0%, 100% 0, 85% 100%, 15% 100%, 0 0);
+			clip-path: none;
 
 			${media.tablet} {
 				clip-path: none;
@@ -183,7 +184,17 @@ const CTA = ({
 			}
 		>
 			<div className="cta__background"></div>
-			<div className="cta__textContainer">
+			<motion.div
+				initial={{ opacity: 0, y: 0 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, amount: 0.6 }}
+				transition={{
+					duration: 0.7,
+					delay: 0.1,
+					ease: "easeOut"
+				}}
+				className="cta__textContainer"
+			>
 				<h3 className="cta__title">{title}</h3>
 				{description && (
 					<p className="cta__description">{description}</p>
@@ -193,7 +204,7 @@ const CTA = ({
 					href={href}
 					theme={buttonThemes[theme]}
 				/>
-			</div>
+			</motion.div>
 
 			{imageUrl && imageAlt && (
 				<img src={imageUrl} alt={imageAlt} className="cta__img" />
