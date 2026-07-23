@@ -36,7 +36,7 @@ export const handler = async (event) => {
 		const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
 
 		const result = await resend.emails.send({
-			from: "MGV Law Contact Form <hello@mgv-lawfirm.com>",
+			from: "MGV Law Contact Form <onboarding@resend.dev>",
 			to: ["bob@foundfablecreative.com"],
 			subject: `New Contact Request from ${safeName}`,
 			replyTo: email,
