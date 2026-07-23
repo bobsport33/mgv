@@ -33,9 +33,11 @@ const AttorneyBioWrapper = styled.section`
 				margin-bottom: 24px;
 			}
 
-			${media.mobile} {
+			@media screen and (max-width: 635px) {
+				flex-direction: column;
+				align-items: flex-start;
 				padding-bottom: 24px;
-				gap: 24px;
+				gap: 20px;
 			}
 		}
 
@@ -48,7 +50,7 @@ const AttorneyBioWrapper = styled.section`
 			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 
 			${media.mobile} {
-				width: 150px;
+				width: 130px;
 			}
 		}
 
@@ -63,6 +65,7 @@ const AttorneyBioWrapper = styled.section`
 			flex-direction: column;
 			gap: 6px;
 			min-width: 0;
+			width: 100%;
 		}
 
 		&__name {
@@ -70,6 +73,8 @@ const AttorneyBioWrapper = styled.section`
 			font-weight: 700;
 			color: var(--neutral-900);
 			margin: 0;
+			line-height: 1.1;
+			overflow-wrap: anywhere;
 
 			${media.mobile} {
 				font-size: 2rem;
@@ -83,9 +88,10 @@ const AttorneyBioWrapper = styled.section`
 			margin: 0;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
+			line-height: 1.2;
 
 			${media.mobile} {
-				font-size: 1.5rem;
+				font-size: 1.2rem;
 			}
 		}
 
