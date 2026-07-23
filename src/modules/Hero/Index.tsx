@@ -40,6 +40,11 @@ const HeroContainer = styled.div`
 				padding: 80px 26px;
 				transform: translateY(-35px);
 			}
+
+			${media.mobile} {
+				padding: 40px 24px;
+				transform: translateY(-10px);
+			}
 		}
 
 		&__heading,

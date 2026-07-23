@@ -57,6 +57,10 @@ const CTAContainer = styled.section<{
 		gap: 30px;
 	}
 
+	${media.mobile} {
+		padding: 24px 0;
+	}
+
 	&.cta--noImage {
 		.cta__textContainer {
 			width: min(700px, 70%);
@@ -94,6 +98,10 @@ const CTAContainer = styled.section<{
 			${media.tablet} {
 				clip-path: polygon(50% 0%, 100% 0, 70% 100%, 0 100%, 0 0);
 			}
+
+			${media.mobile} {
+				clip-path: none;
+			}
 		}
 
 		&__textContainer {
@@ -105,6 +113,10 @@ const CTAContainer = styled.section<{
 			gap: 25px;
 			padding: 36px;
 			z-index: 2;
+
+			${media.mobile} {
+				padding: 0;
+			}
 		}
 
 		&__title {

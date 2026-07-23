@@ -67,7 +67,7 @@ const Awards = styled.div`
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 16px;
+			gap: 10px;
 
 			${media.tablet} {
 				padding: 12px;
@@ -76,26 +76,21 @@ const Awards = styled.div`
 			}
 
 			${media.mobile} {
-				flex-direction: row;
-				text-align: left;
-				padding: 14px;
-				gap: 14px;
 			}
 
 			&__img {
 				width: auto;
-				height: 120px;
+				height: 70px;
 				object-fit: contain;
 				background-color: transparent;
 				flex-shrink: 0;
 
 				${media.tablet} {
-					height: 64px;
+					height: 50px;
 				}
 
 				${media.mobile} {
-					height: 64px;
-					max-width: 120px;
+					height: 40px;
 				}
 			}
 

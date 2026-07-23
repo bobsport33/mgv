@@ -63,6 +63,10 @@ const ImageContent = styled.div`
 			${media.tablet} {
 				width: 85%;
 			}
+
+			${media.mobile} {
+				gap: 60px;
+			}
 		}
 
 		&__titleWrapper {
