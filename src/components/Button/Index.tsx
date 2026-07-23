@@ -88,7 +88,7 @@ const buttonStyles = css`
 
 	&.button--surface-primary,
 	&.button--surface-secondary {
-		background-color: var(--neutral-100);
+		background-color: var(--neutral-200);
 		color: var(--secondary-500);
 
 		&:hover:not(:disabled) {

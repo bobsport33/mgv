@@ -5,6 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "@emotion/styled";
 
+import { media } from "@/styles/breakpoints";
 import Button from "@/components/Button/Index";
 
 // ── Zod Schema ──
@@ -22,18 +23,24 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 // ── Styled Wrapper ──
 const ContactWrapper = styled.section`
-	margin: 36px;
-	background-color: transparent;
+	padding: 56px 36px;
+	background-color: var(--primary-700);
 
 	& .contact {
 		/* ── Inner Layout ── */
 		&__inner {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: 72px;
+			gap: 56px;
 			align-items: start;
 			max-width: 1200px;
 			margin: 0 auto;
+
+			${media.tablet} {
+				grid-template-columns: 1fr;
+				gap: 40px;
+				max-width: 700px;
+			}
 		}
 
 		/* ── Copy ── */
@@ -43,53 +50,89 @@ const ContactWrapper = styled.section`
 			gap: 1.25rem;
 			position: sticky;
 			top: 2rem;
+
+			${media.tablet} {
+				position: static;
+			}
 		}
 
 		&__heading {
 			font-family: var(--font-bodoni);
-			font-size: clamp(2rem, 3vw, 3rem);
+			font-size: clamp(2rem, 3vw, 2.75rem);
 			font-weight: 400;
+			color: var(--neutral-100);
+
+			&::after {
+				content: "";
+				display: block;
+				width: 50px;
+				height: 2px;
+				margin-top: 16px;
+				background-color: var(--secondary-500);
+			}
+
+			${media.mobile} {
+				font-size: 2rem;
+			}
 		}
 
 		&__intro {
 			font-size: var(--body-large);
-			line-height: 1.75;
-			color: var(--neutral-800);
+			line-height: 1.65;
+			color: rgba(237, 235, 231, 0.8);
 		}
 
 		&__body {
 			font-size: 0.95rem;
 			line-height: 1.75;
-			color: var(--neutral-700);
+			color: rgba(237, 235, 231, 0.7);
 		}
 
 		/* ── Form Wrapper ── */
 		&__formWrapper {
-			padding: 2rem 0 2rem 3rem;
-			border-left: 1px solid var(--neutral-300);
+			padding: 1rem 0 1rem 3rem;
+			border-left: 1px solid rgba(237, 235, 231, 0.2);
+
+			${media.tablet} {
+				padding: 1.5rem 0 0;
+				border-left: none;
+				border-top: 1px solid rgba(237, 235, 231, 0.25);
+			}
 		}
 
 		&__detail {
-			padding: 2rem 0;
+			padding: 1.25rem 0;
 		}
 
 		&__label {
 			display: block;
-			margin-bottom: 0.75rem;
+			margin-bottom: 0.5rem;
 
 			font-size: 0.75rem;
 			letter-spacing: 0.18em;
 			text-transform: uppercase;
 
-			color: var(--primary-500);
+			color: var(--secondary-500);
 		}
 
+		&__required {
+			color: var(--secondary-500);
+		}
+
+		&__optional {
+			font-size: 0.75rem;
+			color: rgba(237, 235, 231, 0.6);
+			text-transform: none;
+			letter-spacing: 0;
+		}
+
+		/* ── Contact Details ── */
 		&__value {
 			&--phone {
 				font-family: var(--font-bodoni);
-				font-size: 2rem;
+				font-size: 1.75rem;
 				letter-spacing: 0.03em;
-				color: var(--neutral-1000);
+				color: var(--neutral-100);
 				position: relative;
 
 				&::after {
@@ -99,7 +142,7 @@ const ContactWrapper = styled.section`
 					left: 0;
 					right: 0;
 					height: 2px;
-					background-color: var(--primary-500);
+					background-color: var(--secondary-500);
 					transform: scaleX(0);
 					transform-origin: center;
 					transition: transform 0.3s ease;
@@ -113,16 +156,17 @@ const ContactWrapper = styled.section`
 
 		&__person {
 			& + .contact__person {
-				margin-top: 1.75rem;
+				margin-top: 1.25rem;
 			}
 
 			h4 {
 				margin-bottom: 0.35rem;
 				font-weight: 400;
+				color: var(--neutral-100);
 			}
 
 			a {
-				color: var(--neutral-700);
+				color: rgba(237, 235, 231, 0.8);
 				transition: color 0.25s ease;
 				position: relative;
 
@@ -133,108 +177,81 @@ const ContactWrapper = styled.section`
 					left: 0;
 					right: 0;
 					height: 2px;
-					background-color: var(--primary-500);
+					background-color: var(--secondary-500);
 					transform: scaleX(0);
 					transform-origin: center;
 					transition: transform 0.3s ease;
 				}
 
-				&:hover::after {
-					transform: scaleX(1);
+				&:hover {
+					color: var(--neutral-100);
+
+					&::after {
+						transform: scaleX(1);
+					}
 				}
 			}
 		}
-
 		/* ── Form ── */
 		&__form {
 			display: flex;
 			flex-direction: column;
-			gap: 1.5rem;
+			gap: 1.25rem;
 		}
 
-		/* ── Field ── */
 		&__field {
 			display: flex;
 			flex-direction: column;
 			gap: 0.4rem;
 		}
 
-		/* ── Label ── */
-		&__label {
-			font-size: 0.85rem;
-			letter-spacing: 0.05em;
-			color: var(--neutral-900);
-			/* text-transform: uppercase; */
-		}
-
-		&__required {
-			color: var(--primary-500);
-		}
-
-		&__optional {
-			font-size: 0.75rem;
-			color: var(--neutral-600);
-			text-transform: none;
-			letter-spacing: 0;
-		}
-
-		/* ── Input & Textarea ── */
 		&__input,
 		&__textarea {
 			font-size: 0.9rem;
-			color: var(--neutral-900);
+			color: var(--neutral-100);
 			background: transparent;
 			border: none;
-			border-bottom: 1px solid var(--neutral-400);
+			border-bottom: 1px solid rgba(237, 235, 231, 0.35);
 			border-radius: 0;
-			padding: 0.75rem 0;
-			transition:
-				border-color 0.2s ease,
-				box-shadow 0.2s ease;
+			padding: 0.65rem 0;
+			transition: border-color 0.2s ease;
 			width: 100%;
 			outline: none;
 
 			&::placeholder {
-				color: var(--neutral-500);
+				color: rgba(237, 235, 231, 0.5);
 			}
 
 			&:focus {
-				border-color: var(--primary-400);
-				box-shadow: 0 0 0 3px var(--primary-100);
+				border-color: var(--secondary-500);
+			}
+
+			${media.mobile} {
+				font-size: 1rem;
+				padding: 0.75rem 0;
 			}
 		}
 
 		&__textarea {
 			resize: vertical;
-			min-height: 120px;
+			min-height: 110px;
 		}
 
-		/* ── Error Modifier ── */
-		&__input {
-			&--error {
-				border-color: var(--accent-500);
-
-				&:focus {
-					border-color: var(--accent-600);
-					box-shadow: 0 0 0 3px var(--accent-100);
-				}
-			}
-		}
-
+		/* ── Errors ── */
+		&__input,
 		&__textarea {
 			&--error {
-				border-color: var(--accent-500);
+				border-color: var(--tertiary-500);
 
 				&:focus {
-					border-color: var(--accent-600);
-					box-shadow: 0 0 0 3px var(--accent-100);
+					border-color: var(--tertiary-400);
 				}
 			}
 		}
 
 		&__errorMessage {
 			font-size: 0.78rem;
-			color: var(--accent-600);
+			color: var(--tertiary-300);
 			margin-top: 0.15rem;
 		}
 
@@ -245,7 +262,7 @@ const ContactWrapper = styled.section`
 			padding-top: 0.5rem;
 		}
 
-		/* ── Success Message ── */
+		/* ── Success ── */
 		&__successMessage {
 			display: flex;
 			flex-direction: column;
@@ -253,8 +270,8 @@ const ContactWrapper = styled.section`
 			justify-content: center;
 			text-align: center;
 			gap: 1.25rem;
-			padding: 2rem;
-			min-height: 300px;
+			padding: 1.5rem;
+			min-height: 220px;
 		}
 
 		&__successIcon {
@@ -263,14 +280,14 @@ const ContactWrapper = styled.section`
 
 		&__successHeading {
 			font-size: 1.5rem;
-			color: var(--neutral-1000);
+			color: var(--neutral-100);
 			letter-spacing: 0.03em;
 		}
 
 		&__successBody {
 			font-size: 0.95rem;
 			line-height: 1.75;
-			color: var(--neutral-700);
+			color: rgba(237, 235, 231, 0.8);
 			max-width: 320px;
 		}
 	}
@@ -378,11 +395,6 @@ const ContactForm = () => {
 								Thanks for reaching out! I&apos;ll be in touch
 								soon.
 							</p>
-							<Button
-								text="Send another message"
-								theme="primary"
-								onClick={() => setSubmitted(false)}
-							/>
 						</div>
 					) : (
 						<form
@@ -494,7 +506,7 @@ const ContactForm = () => {
 											? "Sending..."
 											: "Get in touch"
 									}
-									theme="primary"
+									theme="surface-primary"
 									disabled={isSubmitting}
 									onClick={() => console.log("click")}
 								></Button>
