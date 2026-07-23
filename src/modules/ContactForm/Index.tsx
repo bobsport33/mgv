@@ -266,20 +266,17 @@ const ContactWrapper = styled.section`
 		&__successMessage {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			align-items: flex-start;
 			justify-content: center;
-			text-align: center;
-			gap: 1.25rem;
+			gap: 1rem;
 			padding: 1.5rem;
 			min-height: 220px;
 		}
 
-		&__successIcon {
-			font-size: 3rem;
-		}
-
 		&__successHeading {
-			font-size: 1.5rem;
+			font-family: var(--font-bodoni);
+			font-size: 2rem;
+			font-weight: 400;
 			color: var(--neutral-100);
 			letter-spacing: 0.03em;
 		}
@@ -387,13 +384,12 @@ const ContactForm = () => {
 				<div className="contact__formWrapper">
 					{submitted ? (
 						<div className="contact__successMessage">
-							<span className="contact__successIcon">✌️</span>
 							<h3 className="contact__successHeading">
-								Message sent!
+								Message sent.
 							</h3>
 							<p className="contact__successBody">
-								Thanks for reaching out! I&apos;ll be in touch
-								soon.
+								Thank you for reaching out. We&apos;ll be in
+								touch soon.
 							</p>
 						</div>
 					) : (

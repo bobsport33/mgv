@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import Script from "next/script";
 
 import localFont from "next/font/local";
 import { Bricolage_Grotesque } from "next/font/google";
@@ -19,14 +20,34 @@ const bodoniCyrillic = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
-		<main
-			className={`${bricolageGrotesque.variable} ${bodoniCyrillic.variable}`}
-		>
-			<Header />
+		<>
+			{/* <!-- Google tag (gtag.js) --> */}
+			<Script
+				src="https://www.googletagmanager.com/gtag/js?id=G-NLXVDGMJHX"
+				strategy="afterInteractive"
+			/>
 
-			<Component {...pageProps} />
+			<Script id="google-analytics" strategy="afterInteractive">
+				{`
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
 
-			<Footer />
-		</main>
+					gtag('config', 'G-NLXVDGMJHX', {
+						page_path: window.location.pathname,
+					});
+				`}
+			</Script>
+
+			<main
+				className={`${bricolageGrotesque.variable} ${bodoniCyrillic.variable}`}
+			>
+				<Header />
+
+				<Component {...pageProps} />
+
+				<Footer />
+			</main>
+		</>
 	);
 }
